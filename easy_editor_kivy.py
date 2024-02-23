@@ -87,7 +87,8 @@ class EditorScreen(Screen):
             file_chooser.bind(on_submit=self.setWorkdir)
             popup.open()
             self.popup = popup
-        
+
+
     def setWorkdir(self, instance, value, *args):
         if value is not None:
             self.path = value[0]
@@ -105,6 +106,7 @@ class EditorScreen(Screen):
         self.popup.dismiss()
         return True
 
+
     def showFileNamesList(self):
         extensions = [".jpg", ".png", ".jpeg", ".bmp", ".gif", ".PNG"]
         self.filenames = [filename for filename in os.listdir(EditorScreen.selected_dir) if os.path.splitext(filename)[1].lower() in extensions]
@@ -118,25 +120,27 @@ class EditorScreen(Screen):
         self.pil_images_list.append(pil_image)
         self.photo_zone.source = self.paths_list[self.j]
 
+
     def chose_image(self):
         for self.j in range(len(self.btns_list)):
             if self.btns_list[self.j].state == "down":
                 self.photo_zone.source = self.paths_list[self.j]
-                print(self.paths_list[self.j])
-    
+                print(self.paths_list[self.j])\
 
-    
+
     def do_left(self):
         if self.pil_images_list:
             new_pil_image = self.pil_images_list[self.j].transpose(PILImage.ROTATE_270)
             self.pil_images_list[self.j] = new_pil_image
             self.photo_zone.texture = self.convert_image_to_texture(new_pil_image)
 
+
     def do_right(self):
         if self.pil_images_list:
             new_pil_image = self.pil_images_list[self.j].transpose(PILImage.ROTATE_90)
             self.pil_images_list[self.j] = new_pil_image
             self.photo_zone.texture = self.convert_image_to_texture(new_pil_image)
+
 
     def do_mirorr(self):
         if self.pil_images_list:
@@ -145,12 +149,14 @@ class EditorScreen(Screen):
             self.pil_images_list[self.j] = mirrored_pil_image  # Замініть зображення в списку
             self.photo_zone.texture = self.convert_image_to_texture(mirrored_pil_image)  # Відобразіть зображення з ефектом
 
+
     def do_sharpner(self):
         if self.pil_images_list:
             original_pil_image = self.pil_images_list[self.j]  # Збережіть оригінальне зображення
             sharpened_pil_image = original_pil_image.filter(PILFilter.SHARPEN)  # Застосуйте ефект
             self.pil_images_list[self.j] = sharpened_pil_image  # Замініть зображення в списку
             self.photo_zone.texture = self.convert_image_to_texture(sharpened_pil_image)  # Відобразіть зображення з ефектом
+
 
     def do_b_w(self):
         if self.pil_images_list:
@@ -172,8 +178,6 @@ class EditorScreen(Screen):
         img_texture = Texture.create(size=(pil_image.width, pil_image.height))
         img_texture.blit_buffer(pil_image.tobytes(), colorfmt='rgb', bufferfmt='ubyte')
         return img_texture
-
-print("Hello world!!!")
 
 
 class HeartCheck(App):
