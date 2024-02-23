@@ -173,7 +173,7 @@ class EditorScreen(Screen):
         img_texture.blit_buffer(pil_image.tobytes(), colorfmt='rgb', bufferfmt='ubyte')
         return img_texture
 
-
+print("Hello world!!!")
 
 
 class HeartCheck(App):
