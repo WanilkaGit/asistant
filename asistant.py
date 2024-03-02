@@ -9,7 +9,8 @@ from kivy.uix.textinput import TextInput
 
 from easy_calculator_kivy import *
 from easy_editor_kivy import *
-from notes import *
+from kivy_notes import *
+from kivy_random import *
 
 
 class MenuScreen(Screen):
@@ -67,7 +68,7 @@ class MenuScreen(Screen):
         self.manager.current = "editor"
 
     def start_random(self):
-        pass
+        self.manager.current = "random"
 
     def start_notes(self):
         self.manager.current = 'notes'
@@ -79,6 +80,8 @@ class ProjectAsistant(App):
         sm.add_widget(CalculatorScreen(name='calculator'))
         sm.add_widget(EditorScreen(name="editor"))
         sm.add_widget(NotesScreen(name="notes"))
+        sm.add_widget(RandomScreen(name="random"))
+        sm.add_widget(KubeScreen(name="kube"))
         return sm
 
 if __name__ == "__main__":
