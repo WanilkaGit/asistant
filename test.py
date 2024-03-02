@@ -1,14 +1,29 @@
 from kivy.app import App
-from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.widget import Widget
+from kivy.graphics import Line, Color
 
-class MyApp(App):
+
+class LineExample(BoxLayout):
+    def __init__(self, **kwargs):
+        super(LineExample, self).__init__(**kwargs)
+
+        # Создаем виджет, на котором будет нарисована линия
+        self.line_widget = Widget()
+
+        # Создаем линию с красным цветом (255, 0, 0, 1)
+        with self.line_widget.canvas:
+            Color(.23, .72, 1, 1)
+            Line(points=[100, 900, 800, 900], width=2)
+
+        # Добавляем виджет с линией в макет
+        self.add_widget(self.line_widget)
+
+
+class TestApp(App):
     def build(self):
-        layout = BoxLayout(orientation="vertical")
-        label = Label(text="Modal popup example")
-        line = Label(size_hint_y=None, height=2, text="", color=[0.5, 0.5, 0.5, 1]) # Сірий колір
-        layout.add_widget(label)
-        layout.add_widget(line)
-        return layout
+        return LineExample()
 
-MyApp().run()
+
+if __name__ == '__main__':
+    TestApp().run()
