@@ -31,7 +31,7 @@ class SelectableLabel(Label):
     def on_touch_down(self, touch):
         global key
         if self.collide_point(*touch.pos):
-            calc_screen = App.get_running_app().root.get_screen("calc")
+            calc_screen = App.get_running_app().root.get_screen("notes")
             key = self.text
             calc_screen.text_field.text = notes[key]["текст"]
             calc_screen.massege_lbl.text = choice(["Ви обрали замітку", "Обрали, що далі робити будемо", "Обирай дію, вибір за тобою"])
@@ -176,3 +176,12 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
                     json.dump(notes, file, sort_keys=True)
         except:
             self.massege_lbl.text = choice(["Ай яй яй яй обери, а потім видаляй", "Неможлива операція", "А що ти хочеш видалити"])
+
+class HeartCheck(App):# тут прописуємо клас менеджер та клас запуску програми
+    def build(self):# функція має бути в класі полюбе або пас
+        sm = ScreenManager()# тут створюємо менеджера скрінів
+        sm.add_widget(NotesScreen(name="notes"))# дамо кожному класу імя яке буде полегшувати переходи
+        return sm
+if __name__ == "__main__":
+    app = HeartCheck()# це створюєм об"єкт з класу що створили для запуску цього всього
+    app.run()# і визиваєм метод ран що запускає програму
