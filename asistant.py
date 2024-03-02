@@ -9,6 +9,7 @@ from kivy.uix.textinput import TextInput
 
 from easy_calculator_kivy import *
 from easy_editor_kivy import *
+from notes import *
 
 
 class MenuScreen(Screen):
@@ -23,21 +24,25 @@ class MenuScreen(Screen):
         tools_row.add_widget(self.info_label)
 
         tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
-        self.setings_btn = Button(text="*", font_size=100, on_press=self.settings)
-        self.profile_btn = Button(text="Me", font_size=50, on_press=self.profile)
+        self.setings_btn = Button(text="*", font_size=100)
+        self.setings_btn.on_press = self.settings
+        self.profile_btn = Button(text="Me", font_size=50)
+        self.profile_btn.on_press = self.profile
         tools_row_btns_col.add_widget(self.setings_btn)
         tools_row_btns_col.add_widget(self.profile_btn)
         tools_row.add_widget(tools_row_btns_col)
 
 
-
-
         function_grid = GridLayout(cols=2)
 
-        self.btn_calc = Button(text="calculator", font_size=50, on_press=self.start_calc)
-        self.btn_edit = Button(text="Photo Editor", font_size=50, on_press=self.start_edit)
-        self.btn_rand = Button(text = "Randomizer", font_size=50, on_press=self.start_random)
-        self.btn_notes = Button(text="Notes", font_size=50, on_press=self.start_notes)
+        self.btn_calc = Button(text="calculator", font_size=50)
+        self.btn_calc.on_press=self.start_calc
+        self.btn_edit = Button(text="Photo Editor", font_size=50)
+        self.btn_edit.on_press=self.start_edit
+        self.btn_rand = Button(text = "Randomizer", font_size=50)
+        self.btn_rand.on_press=self.start_random
+        self.btn_notes = Button(text="Notes", font_size=50)
+        self.btn_notes.on_press=self.start_notes
 
         function_grid.add_widget(self.btn_calc)
         function_grid.add_widget(self.btn_edit)
@@ -65,7 +70,7 @@ class MenuScreen(Screen):
         pass
 
     def start_notes(self):
-        pass
+        self.manager.current = 'notes'
 
 class ProjectAsistant(App):
     def build(self):
@@ -73,6 +78,7 @@ class ProjectAsistant(App):
         sm.add_widget(MenuScreen(name='menu'))
         sm.add_widget(CalculatorScreen(name='calculator'))
         sm.add_widget(EditorScreen(name="editor"))
+        sm.add_widget(NotesScreen(name="notes"))
         return sm
 
 if __name__ == "__main__":
