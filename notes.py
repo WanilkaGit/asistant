@@ -176,12 +176,3 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
                     json.dump(notes, file, sort_keys=True)
         except:
             self.massege_lbl.text = choice(["Ай яй яй яй обери, а потім видаляй", "Неможлива операція", "А що ти хочеш видалити"])
-
-class HeartCheck(App):# тут прописуємо клас менеджер та клас запуску програми
-    def build(self):# функція має бути в класі полюбе або пас
-        sm = ScreenManager()# тут створюємо менеджера скрінів
-        sm.add_widget(NotesScreen(name="calc"))# дамо кожному класу імя яке буде полегшувати переходи
-        return sm
-
-app = HeartCheck()# це створюєм об"єкт з класу що створили для запуску цього всього
-app.run()# і визиваєм метод ран що запускає програму

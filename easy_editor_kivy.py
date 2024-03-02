@@ -178,16 +178,3 @@ class EditorScreen(Screen):
         img_texture = Texture.create(size=(pil_image.width, pil_image.height))
         img_texture.blit_buffer(pil_image.tobytes(), colorfmt='rgb', bufferfmt='ubyte')
         return img_texture
-
-
-class HeartCheck(App):
-    def build(self):
-        sm = ScreenManager()
-        sm.add_widget(EditorScreen(name="editor"))
-        return sm
-
-if __name__ == "__main__":
-
-    app = HeartCheck()
-
-    app.run()

@@ -86,14 +86,3 @@ class CalculatorScreen(Screen):
 
         main_col.add_widget(root)
         self.add_widget(main_col)
-
-
-# class ProjectAsistant(App):
-#     def build(self):
-#         sm = ScreenManager()
-#         sm.add_widget(CalculatorScreen(name='main'))
-#         return sm
-
-
-# if __name__ == "__main__":
-#     ProjectAsistant().run()
