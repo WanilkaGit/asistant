@@ -10,7 +10,7 @@ class RandomScreen(Screen):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        chose_lbl = Label(text="0:50 звуки забору, \n щось схоже на закриття \n багажнику автомобіля",font_size=50)
+        chose_lbl = Label(text="",font_size=50)
         self.ranint = Button(text="кубик 1/6",  font_size=100)
         self.ranint.on_press = self.next
         self.one_for_4 = Button(text="1 з 4", font_size=100)

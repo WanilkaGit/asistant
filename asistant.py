@@ -7,10 +7,10 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 
-from easy_calculator_kivy import *
-from easy_editor_kivy import *
-from kivy_notes import *
-from kivy_random import *
+from asistant_small_calculator import *
+from asistant_small_foto_editor import *
+from asistant_samall_notes import *
+from asistant_small_random import *
 
 
 class MenuScreen(Screen):
