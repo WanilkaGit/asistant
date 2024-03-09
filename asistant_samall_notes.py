@@ -13,15 +13,6 @@ from kivy.uix.textinput import TextInput
 from kivy.core.window import Window
 from kivy.uix.popup import Popup
 import json
-
-'''Замітки в json'''
-notes = {
-    "Ласкаво просимо!": {
-    "текст": "Це найкращий додаток для заміток у світі!"
-    }
-}
-with open("notes_data.json", "w") as file:
-    json.dump(notes, file)
     
 with open('notes_data.json', 'r') as file:
     notes = json.load(file)

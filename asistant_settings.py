@@ -12,6 +12,7 @@ from kivy.uix.switch import Switch
 class SettigsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        main_col = BoxLayout(orientation="vertical")
         self.grid_line = GridLayout(rows=1)
         self.grid_line.bind(minimum_width = self.grid_line.setter("width"))
         scrol = ScrollView()
@@ -32,7 +33,8 @@ class SettigsScreen(Screen):
         self.grid_line.add_widget(self.calc_btn)
         self.grid_line.add_widget(self.me_btn)
         self.grid_line.add_widget(self.menu_btn)
-        self.add_widget(scrol)
+        main_col.add_widget(scrol)
+        self.add_widget(main_col)
 
 class SettingsApp(App):
     def build(self):

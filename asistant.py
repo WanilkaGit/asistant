@@ -12,6 +12,82 @@ from asistant_small_foto_editor import *
 from asistant_samall_notes import *
 from asistant_small_random import *
 
+'''Замітки в json'''
+notes = {
+    "Notes": {"Ласкаво просимо!": {
+    "текст": "Це найкращий додаток для заміток у світі!"
+    }},
+    "Settings":{
+        "Standart":{
+            "buttons":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "textinput":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "labels": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "switchers": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},},
+        "Notes":{
+            "buttons":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "textinput":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "labels": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]}},
+        "Random":{
+            "buttons":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "textinput":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "labels": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]}},
+        "Easy editor":{
+            "buttons":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "labels": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+        "Menu":{
+            "buttons":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "textinput":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "labels": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "switchers": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+        "Me":{
+            "buttons":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "textinput":{
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "labels": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},
+            "switchers": {
+                "color": [float, float, float, float],
+                "size": [int, int, int, int]},},
+    "Me":{}
+}
+with open("notes_data.json", "w") as file:
+    json.dump(notes, file)
 
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
