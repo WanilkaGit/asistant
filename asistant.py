@@ -57,7 +57,7 @@ notes = {
                 "size": [int, int, int, int]},
             "labels": {
                 "color": [float, float, float, float],
-                "size": [int, int, int, int]},
+                "size": [int, int, int, int]}},
         "Menu":{
             "buttons":{
                 "color": [float, float, float, float],
@@ -70,7 +70,7 @@ notes = {
                 "size": [int, int, int, int]},
             "switchers": {
                 "color": [float, float, float, float],
-                "size": [int, int, int, int]},
+                "size": [int, int, int, int]}},
         "Me":{
             "buttons":{
                 "color": [float, float, float, float],
@@ -83,7 +83,7 @@ notes = {
                 "size": [int, int, int, int]},
             "switchers": {
                 "color": [float, float, float, float],
-                "size": [int, int, int, int]},},
+                "size": [int, int, int, int]}},
     "Me":{}
 }
 with open("notes_data.json", "w") as file:
