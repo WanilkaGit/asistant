@@ -52,47 +52,37 @@ class CalculatorScreen(Screen):
 
 
         root = BoxLayout(orientation="vertical", padding=5)
-        self.result = TextInput(text="", foreground_color=[1, 1, 1, 1], readonly=True, font_size=25, size_hint = [1, 0.75], background_color = [0, 0, 0, 1])
+        self.result = TextInput(text="", foreground_color=[1, 1, 1, 1], readonly=True, font_size=50, size_hint = [1, 0.75], background_color = [0, 0, 0, 1])
         root.add_widget(self.result)
         btn_grid = GridLayout(rows=5)
 
-        btn_grid.add_widget(Button(text="<=", on_press=self.calculate, color="#9400D3"))
-        btn_grid.add_widget(Button(text="%", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="(", on_press=self.calculate))
-        btn_grid.add_widget(Button(text=")", on_press=self.calculate))
+        btn_grid.add_widget(Button(text="<=", on_press=self.calculate, color="#9400D3", font_size=50))
+        btn_grid.add_widget(Button(text="%", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="(", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text=")", on_press=self.calculate, font_size=50))
 
-        btn_grid.add_widget(Button(text="7", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="8", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="9", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="*", on_press=self.calculate))
+        btn_grid.add_widget(Button(text="7", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="8", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="9", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="*", on_press=self.calculate, font_size=50))
 
-        btn_grid.add_widget(Button(text="4", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="5", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="6", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="+", on_press=self.calculate))
+        btn_grid.add_widget(Button(text="4", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="5", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="6", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="+", on_press=self.calculate, font_size=50))
 
 
-        btn_grid.add_widget(Button(text="1", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="2", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="3", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="/", on_press=self.calculate))
+        btn_grid.add_widget(Button(text="1", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="2", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="3", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="/", on_press=self.calculate, font_size=50))
 
-        btn_grid.add_widget(Button(text=".", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="0", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="=", on_press=self.calculate))
-        btn_grid.add_widget(Button(text="-", on_press=self.calculate))
+        btn_grid.add_widget(Button(text=".", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="0", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="=", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="-", on_press=self.calculate, font_size=50))
 
         root.add_widget(btn_grid)
 
         main_col.add_widget(root)
         self.add_widget(main_col)
-
-class ProjectAsistant(App):
-    def build(self):
-        sm = ScreenManager()
-        sm.add_widget(CalculatorScreen(name='main'))
-        return sm
-
-
-if __name__ == "__main__":
-    ProjectAsistant().run()
