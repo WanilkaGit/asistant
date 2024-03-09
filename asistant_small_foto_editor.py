@@ -17,7 +17,7 @@ from kivy.uix.filechooser import FileChooserIconView
 
 
 class EditorScreen(Screen):
-    selected_dir = r"c"
+    selected_dir = r"d:/"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
