@@ -17,7 +17,7 @@ import os
 
 
 class EditorScreen(Screen):
-    selected_dir = r"c"
+    selected_dir = r"d:"
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -82,6 +82,7 @@ class EditorScreen(Screen):
     def chooseWorkdir(self):
         layout = BoxLayout(orientation="vertical")
         self.file_chooser = FileChooserIconView()
+        self.file_chooser.path = "d:"
         self.file_chooser.dirselect = True
         button = Button(text="Підтвердити вибір", size_hint=(1, 0.2))
         button.on_press = self.showFileNamesList
