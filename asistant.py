@@ -40,9 +40,9 @@ notes = {
             "birthday_day": int(),
             "birthday_moon": int(),
             "birthday_year": int()
-        }
-    }
+        }}
 }
+
 with open("notes_data.json", "w") as file:
     json.dump(notes, file)
 
