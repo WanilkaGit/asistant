@@ -18,73 +18,30 @@ notes = {
     "текст": "Це найкращий додаток для заміток у світі!"
     }},
     "Settings":{
-        "Standart":{
             "buttons":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
+                "color": [float(), float(), float(), float()],
+                "size": [int(), int(), int(), int()]},
             "textinput":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
+                "color": [float(), float(), float(), float()],
+                "size": [int(), int(), int(), int()]},
             "labels": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
+                "color": [float(), float(), float(), float()],
+                "size": [int(), int(), int(), int()]},
             "switchers": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},},
-        "Notes":{
-            "buttons":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "textinput":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "labels": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]}},
-        "Random":{
-            "buttons":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "textinput":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "labels": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]}},
-        "Easy editor":{
-            "buttons":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "labels": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]}},
-        "Menu":{
-            "buttons":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "textinput":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "labels": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "switchers": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]}},
-        "Me":{
-            "buttons":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "textinput":{
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "labels": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]},
-            "switchers": {
-                "color": [float, float, float, float],
-                "size": [int, int, int, int]}},
-    "Me":{}
+                "color": [float(), float(), float(), float()],
+                "size": [int(), int(), int(), int()]}},
+    "Me":{
+        "User_ID": int(),
+        "User_Name": str(),
+        "User_password": str(),
+        "User_frase": str(),
+        "User_about": str(),
+        "User_happy_birthday": {
+            "birthday_day": int(),
+            "birthday_moon": int(),
+            "birthday_year": int()
+        }
+    }
 }
 with open("notes_data.json", "w") as file:
     json.dump(notes, file)
