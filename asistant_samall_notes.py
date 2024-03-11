@@ -15,7 +15,7 @@ from kivy.uix.popup import Popup
 import json
     
 with open('notes_data.json', 'r') as file:
-    notes = json.load(file["Notes"])
+    notes = json.load(file)
 
 
 class SelectableLabel(Label):
