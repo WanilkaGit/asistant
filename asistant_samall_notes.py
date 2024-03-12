@@ -13,9 +13,10 @@ from kivy.uix.textinput import TextInput
 from kivy.core.window import Window
 from kivy.uix.popup import Popup
 import json
-    
+
+
 with open('notes_data.json', 'r') as file:
-    notes = json.load(file)
+    notes = json.load(file)["Notes"]
 
 
 class SelectableLabel(Label):
@@ -146,10 +147,10 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
     def save_note(self):
         try:
             global key
-            notes[key]["текст"] = self.text_field.text
+            notes["Notes"][key]["текст"] = self.text_field.text
             self.massege_lbl.text = choice(["Зберігаємо замітки текст", "Текст збережений", "Збе-ре-же-но"])
             with open('notes_data.json', 'w') as file:
-                json.dump(notes, file, sort_keys=True)
+                json.dump(notes["Notes"], file, sort_keys=True)
         except:
             self.massege_lbl.text = choice(["Ви не обрали замітку", "Обиріть замітку", "Що ти хочеш зберегти"])
 
@@ -164,7 +165,7 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
                         self.list_note.remove(widget)  # Видалити віджет із списку
                         self.massege_lbl.text = choice(["Замітку і інформаію про неї видалено", "Ви видалили заиітку", "Ви-да-ле-но"])
                 with open('notes_data.json', 'w') as file:
-                    json.dump(notes, file, sort_keys=True)
+                    json.dump(notes["Notes"], file, sort_keys=True)
         except:
             self.massege_lbl.text = choice(["Ай яй яй яй обери, а потім видаляй", "Неможлива операція", "А що ти хочеш видалити"])
 
