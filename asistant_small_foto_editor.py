@@ -1,5 +1,5 @@
 from PIL import Image as PILImage
-from PIL import ImageFilter as PILFilter
+from PIL import ImageFilter
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -22,16 +22,13 @@ class EditorScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        self.path = None
-        self.j = 0
-        self.pil_images_list = []  # Список для збереження зображень PIL.Image
+        self.workdir = None
+        self.save_dir = 'Modified/'
 
         self.btns_list = []
-        self.paths_list = []
-
         self.popup = None
 
-        self.photo_zone = KivyImage(source=None)
+        self.photo_zone = KivyImage(source=None, keep_data=False)
         self.photo_zone.fit_mode = "scale-down"
 
         self.btn_folder = Button(text="Папочки", size_hint=(1, 0.1))
@@ -54,6 +51,7 @@ class EditorScreen(Screen):
         self.btn_mirror.on_press = self.do_mirorr
         self.btn_sharp.on_press = self.do_sharpner
         self.btn_b_w.on_press = self.do_b_w
+        self.btn_blur.on_press = self.do_blur
         self.btn_folder.on_press = self.chooseWorkdir
 
         col1 = BoxLayout(orientation="vertical", size_hint=(0.145, 1))
@@ -92,92 +90,81 @@ class EditorScreen(Screen):
         self.popup.add_widget(layout)
         self.popup.open()
 
-    # def setWorkdir(self, instance):
-    #     print(self.file_chooser.path)
-    #     if self.file_chooser.path:
-    #         print("Ви обрали файл:", self.path)
-    #         self.showFileNamesList()
-    #     else:
-    #         print("Шлях не існує:", self.path)
-    #     self.popup.dismiss()
-    #     return True
+    def load_image(self, dir, filename):
+        self.dir = dir
+        self.filename = filename
+        image_path = os.path.join(dir, filename)
+        self.image = PILImage.open(image_path)
+
+    def show_image(self, path):
+        dir, filename = os.path.split(path)
+        self.load_image(dir, filename)
+        self.photo_zone.source = os.path.join(dir, filename)
+        self.photo_zone.reload()
+
+    def save_image(self):
+        path = os.path.join(self.workdir, self.save_dir)  # шлях до папки Modified
+        if not (os.path.exists(path) or os.path.isdir(path)):
+            os.mkdir(path)
+        full_path = os.path.join(path, self.filename)
+        self.image.save(full_path)
+
     def showFileNamesList(self):
-        if self.file_chooser.path:
+        self.workdir = self.file_chooser.path
+        if self.workdir:
             extensions = [".jpg", ".png", ".jpeg", ".bmp", ".gif", ".PNG"]
-            self.filenames = [filename for filename in os.listdir(self.file_chooser.path) if os.path.splitext(filename)[1].lower() in extensions]
-            print(self.filenames)
-            print(self.file_chooser.path)
-            i = 0
-            for filename in self.filenames:
+            filenames = [filename for filename in os.listdir(self.file_chooser.path) if os.path.splitext(filename)[1].lower() in extensions]
+            for filename in filenames:
                 self.b1 = ToggleButton(text=filename, group="cipher", size_hint_y=None)
                 self.list_files.add_widget(self.b1)
                 self.btns_list.append(self.b1)
-                self.b1.on_press = self.chose_image
-                self.full_path = os.path.join(self.file_chooser.path, filename)
-                self.paths_list.append(self.full_path)
-                pil_image = PILImage.open(self.paths_list[i])
-                self.pil_images_list.append(pil_image)
-                i += 1
+                path = os.path.join(self.workdir, filename)
+                self.b1.bind(on_press=lambda instance, path=path: self.show_image(path))
+
             self.popup.dismiss()
 
-    def chose_image(self):
-        for i in range(len(self.btns_list)):
-            if self.btns_list[i].state == "down":
-                self.photo_zone.source = self.paths_list[i]
-
     def do_left(self):
-        if self.pil_images_list:
-            for i in range(len(self.pil_images_list)):
-                if self.btns_list[i].state == 'down':
-                    new_pil_image = self.pil_images_list[i].transpose(PILImage.ROTATE_270)
-                    self.pil_images_list[i] = new_pil_image
-                    self.photo_zone.texture = self.convert_image_to_texture(new_pil_image)
+        self.image = self.image.transpose(PILImage.ROTATE_90)
+        save_path = os.path.join(self.workdir, self.save_dir, self.filename)
+        self.save_image()
+        self.show_image(save_path)
+
 
     def do_right(self):
-        if self.pil_images_list:
-            for i in range(len(self.pil_images_list)):
-                if self.btns_list[i].state == 'down':
-                    new_pil_image = self.pil_images_list[i].transpose(PILImage.ROTATE_90)
-                    self.pil_images_list[i] = new_pil_image
-                    self.photo_zone.texture = self.convert_image_to_texture(new_pil_image)
-
+        self.image = self.image.transpose(PILImage.ROTATE_270)
+        save_path = os.path.join(self.workdir, self.save_dir, self.filename)
+        self.save_image()
+        self.show_image(save_path)
 
     def do_mirorr(self):
-        if self.pil_images_list:
-            for i in range(len(self.pil_images_list)):
-                if self.btns_list[i].state == 'down':
-                    new_pil_image = self.pil_images_list[i].transpose(PILImage.FLIP_LEFT_RIGHT)
-                    self.pil_images_list[i] = new_pil_image
-                    self.photo_zone.texture = self.convert_image_to_texture(new_pil_image)
+        self.image = self.image.transpose(PILImage.FLIP_LEFT_RIGHT)
+        save_path = os.path.join(self.workdir, self.save_dir, self.filename)
+        self.save_image()
+        self.show_image(save_path)
 
     def do_sharpner(self):
-        if self.pil_images_list:
-            for i in range(len(self.pil_images_list)):
-                if self.btns_list[i].state == 'down':
-                    new_pil_image = self.pil_images_list[i].filter(PILFilter.SHARPEN)
-                    self.pil_images_list[i] = new_pil_image
-                    self.photo_zone.texture = self.convert_image_to_texture(new_pil_image)
+        self.image = self.image.filter(ImageFilter.SHARPEN)
+        save_path = os.path.join(self.workdir, self.save_dir, self.filename)
+        self.save_image()
+        self.show_image(save_path)
 
     def do_b_w(self):
-        if self.pil_images_list:
-            try:
-                print("Тут має бути щось")
-                original_pil_image = self.pil_images_list[self.j]  # Збережіть оригінальне зображення
-                print("Тут має бути щось")
-                bw_pil_image = original_pil_image.convert("L")  # Застосувати ефект
-                print("Тут має бути щось")
-                self.pil_images_list[self.j] = bw_pil_image  # Замінити зображення в списку
-                print("Тут має бути щось")
-                self.photo_zone.texture = self.convert_image_to_texture(bw_pil_image)
-                print("Тут має бути щось")
-            except Exception as e:
-                print("Помилка під час конвертації відтінків сірого:", e)
+        self.image = self.image.convert('L')
+        save_path = os.path.join(self.workdir, self.save_dir, self.filename)
+        self.save_image()
+        self.show_image(save_path)
 
+    def do_blur(self):
+        self.image = self.image.filter(ImageFilter.BLUR)
+        save_path = os.path.join(self.workdir, self.save_dir, self.filename)
+        self.save_image()
+        self.show_image(save_path)
 
-    def convert_image_to_texture(self, pil_image):
-        img_texture = Texture.create(size=(pil_image.width, pil_image.height))
-        if pil_image.mode == "RGB":
-            img_texture.blit_buffer(pil_image.tobytes(), colorfmt='rgb', bufferfmt='ubyte')
-        if pil_image.mode == "RGBA":
-            img_texture.blit_buffer(pil_image.tobytes(), colorfmt='rgba', bufferfmt='ubyte')
-        return img_texture
+    # def convert_image_to_texture(self, pil_image):
+    #     img_texture = Texture.create(size=(pil_image.width, pil_image.height))
+    #     if pil_image.mode == "RGB":
+    #         img_texture.blit_buffer(pil_image.tobytes(), colorfmt='rgb', bufferfmt='ubyte')
+    #     if pil_image.mode == "RGBA":
+    #         img_texture.blit_buffer(pil_image.tobytes(), colorfmt='rgba', bufferfmt='ubyte')
+    #     img_texture
+    #     return img_texture
