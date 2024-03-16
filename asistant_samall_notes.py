@@ -14,10 +14,20 @@ from kivy.core.window import Window
 from kivy.uix.popup import Popup
 import json
 
+# notes = {
+#     "Ласкаво просимо!": {
+#         "текст": "Це найкращий додаток для заміток у світі!"
+#     }
+# }
 
-with open('notes_data.json', 'r') as file:
-    notes = json.load(file)["Notes"]
+# # Записуємо дані у файл
+# with open("JSON\\notes.json", "w", encoding='utf-8') as file:
+#     json.dump(notes, file, ensure_ascii=False, indent=4)
 
+# Читаємо дані з файлу
+with open('JSON\\notes.json', 'r', encoding='utf-8') as file:
+    notes = json.load(file)
+    print(notes["Ласкаво просимо!"]["текст"])
 
 class SelectableLabel(Label):
     def on_touch_down(self, touch):
@@ -147,10 +157,10 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
     def save_note(self):
         try:
             global key
-            notes["Notes"][key]["текст"] = self.text_field.text
+            notes[key]["текст"] = self.text_field.text
             self.massege_lbl.text = choice(["Зберігаємо замітки текст", "Текст збережений", "Збе-ре-же-но"])
-            with open('notes_data.json', 'w') as file:
-                json.dump(notes["Notes"], file, sort_keys=True)
+            with open("JSON\\notes.json", "w", encoding='utf-8') as file:
+                json.dump(notes, file, ensure_ascii=False, indent=4)
         except:
             self.massege_lbl.text = choice(["Ви не обрали замітку", "Обиріть замітку", "Що ти хочеш зберегти"])
 
@@ -164,8 +174,8 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
                         self.list_notes.remove_widget(widget)
                         self.list_note.remove(widget)  # Видалити віджет із списку
                         self.massege_lbl.text = choice(["Замітку і інформаію про неї видалено", "Ви видалили заиітку", "Ви-да-ле-но"])
-                with open('notes_data.json', 'w') as file:
-                    json.dump(notes["Notes"], file, sort_keys=True)
+                        with open("JSON\\notes.json", "w", encoding='utf-8') as file:
+                            json.dump(notes, file, ensure_ascii=False, indent=4)
         except:
             self.massege_lbl.text = choice(["Ай яй яй яй обери, а потім видаляй", "Неможлива операція", "А що ти хочеш видалити"])
 
