@@ -10,22 +10,22 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.switch import Switch
 import json
 
-settings = {
-        "buttons":{
-            "color": [float(), float(), float(), float()],
-            "size": [int(), int(), int(), int()]},
-        "textinput":{
-            "color": [float(), float(), float(), float()],
-            "size": [int(), int(), int(), int()]},
-        "labels": {
-            "color": [float(), float(), float(), float()],
-            "size": [int(), int(), int(), int()]},
-        "switchers": {
-            "color": [float(), float(), float(), float()],
-            "size": [int(), int(), int(), int()]}}
+# settings = {
+#         "buttons":{
+#             "color": [float(), float(), float(), float()],
+#             "size": [int(), int(), int(), int()]},
+#         "textinput":{
+#             "color": [float(), float(), float(), float()],
+#             "size": [int(), int(), int(), int()]},
+#         "labels": {
+#             "color": [float(), float(), float(), float()],
+#             "size": [int(), int(), int(), int()]},
+#         "switchers": {
+#             "color": [float(), float(), float(), float()],
+#             "size": [int(), int(), int(), int()]}}
 
-with open("JSON\\settings.json", "w") as file:
-    json.dump(settings, file, sort_keys=True)
+# with open("JSON\\settings.json", "w") as file:
+#     json.dump(settings, file, sort_keys=True)
 
 with open('JSON\\settings.json', 'r') as file:
     settings = json.load(file)
