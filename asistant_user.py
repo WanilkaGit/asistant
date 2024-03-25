@@ -32,6 +32,14 @@ import json
 with open('JSON\\user_info.json', 'r') as file:
     settings = json.load(file)
 
+def birth_day_func(birth_day, text):
+    print(text)
+
+def birth_mounth_func(birth_mounth, text):
+    print(text)
+
+def birth_year_func(birth_year, text):
+    print(text)
 
 class UserInfoScreen(Screen):
     def __init__(self, **kwargs):
@@ -43,16 +51,23 @@ class UserInfoScreen(Screen):
         self.user_pas = TextInput(hint_text="Вкажіть пароль")
         self.user_frase = TextInput(hint_text="Ваша фраза")
         self.user_info = TextInput(hint_text="Вкажи яка ти кицюня(котик)")
+
         user_birth_row =GridLayout(rows=1, cols=3)
+
         self.birth_day = Spinner(text="День народження")
         for i in range(1, 31):
             self.birth_day.values.append(str(i))
+        self.birth_day.bind(text=birth_day_func)
+
         self.birth_mounth = Spinner(text="Місяць народження")
         for i in range(1, 12):
-            self.birth_mounth.values.append(str(i))  
+            self.birth_mounth.values.append(str(i))
+        self.birth_mounth.bind(text=birth_mounth_func)
+
         self.birth_year = Spinner(text="Рік народження")
         for i in range(1, 24):
-            self.birth_year.values.append(str(i))  
+            self.birth_year.values.append(str(i))
+        self.birth_year.bind(text=birth_year_func)
         user_birth_row.add_widget(self.birth_day)
         user_birth_row.add_widget(self.birth_mounth)
         user_birth_row.add_widget(self.birth_year)
@@ -69,6 +84,8 @@ class UserInfoScreen(Screen):
         scroller = ScrollView()
         scroller.add_widget(main_col)
         self.add_widget(scroller)
+
+
 
 class UserInfoApp(App):
     def build(self):

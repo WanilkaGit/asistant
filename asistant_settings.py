@@ -3,29 +3,29 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.scrollview import ScrollView
 
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.switch import Switch
+from kivy.uix.label import Label
+
 import json
 
-# settings = {
-#         "buttons":{
-#             "color": [float(), float(), float(), float()],
-#             "size": [int(), int(), int(), int()]},
-#         "textinput":{
-#             "color": [float(), float(), float(), float()],
-#             "size": [int(), int(), int(), int()]},
-#         "labels": {
-#             "color": [float(), float(), float(), float()],
-#             "size": [int(), int(), int(), int()]},
-#         "switchers": {
-#             "color": [float(), float(), float(), float()],
-#             "size": [int(), int(), int(), int()]}}
+settings = {
+        "buttons":{
+            "bg_color": [float(), float(), float(), float()],
+            "text_color": [float(), float(), float(), float()]},
+        "textinput":{
+            "bg_color": [float(), float(), float(), float()],
+            "text_color": [float(), float(), float(), float()]},
+        "labels": {
+            "color": [float(), float(), float(), float()],
+            "text_color": [float(), float(), float(), float()]},
+        "switchers": {
+            "bg_color": [float(), float(), float(), float()]}}
 
-# with open("JSON\\settings.json", "w") as file:
-#     json.dump(settings, file, sort_keys=True)
+with open("JSON\\settings.json", "w") as file:
+    json.dump(settings, file, sort_keys=True)
 
 with open('JSON\\settings.json', 'r') as file:
     settings = json.load(file)
@@ -34,27 +34,18 @@ class SettigsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         main_col = BoxLayout(orientation="vertical")
-        self.grid_line = GridLayout(rows=1)
-        self.grid_line.bind(minimum_width = self.grid_line.setter("width"))
-        scrol = ScrollView()
-        scrol.add_widget(self.grid_line)
-
-        self.standart_btn = Button(text="Standart")
-        self.notes_btn = Button(text="Notes")
-        self.random_btn = Button(text="Random")
-        self.foto_editor_btn = Button(text="Foto editor")
-        self.calc_btn = Button(text="Calculator")
-        self.me_btn = Button(text="Me")
-        self.menu_btn = Button(text="Menu")
-
-        self.grid_line.add_widget(self.standart_btn)
-        self.grid_line.add_widget(self.notes_btn)
-        self.grid_line.add_widget(self.random_btn)
-        self.grid_line.add_widget(self.foto_editor_btn)
-        self.grid_line.add_widget(self.calc_btn)
-        self.grid_line.add_widget(self.me_btn)
-        self.grid_line.add_widget(self.menu_btn)
-        main_col.add_widget(scrol)
+        buttons_label = Button(text="Кнопка")
+        main_col.add_widget(buttons_label)
+        
+        text_input_label = TextInput(text="Поле вводу")
+        main_col.add_widget(text_input_label)
+        
+        label_label = Label(text="Заголовок")
+        main_col.add_widget(label_label)
+        
+        switcher_label = Switch(color=[0, 1, 0, 1])
+        main_col.add_widget(switcher_label)
+        
         self.add_widget(main_col)
 
 class SettingsApp(App):
