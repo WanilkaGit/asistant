@@ -1,3 +1,5 @@
+import os
+print("Поточний каталог:", os.getcwd(JSON\\notes.json))
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 
@@ -12,9 +14,6 @@ from asistant_small_foto_editor import *
 from asistant_samall_notes import *
 from asistant_small_random import *
 
-
-with open("notes_data.json", "w") as file:
-    json.dump(notes, file)
 
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
