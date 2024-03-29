@@ -65,7 +65,7 @@ class SettigsScreen(Screen):
         self.add_widget(main_col)
 
     def save_settings(self):
-        settings["buttons"]["bg_color"] = self.btns_inp_bgcol.text()
+        settings["buttons"]["bg_color"] = self.btns_inp_bgcol.text()  
         print(str(self.btns_inp_bgcol.text()))
         settings["buttons"]["text_color"] = self.btns_inp_txtcol.text()
         print(str(self.btns_inp_txtcol.text()))
