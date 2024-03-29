@@ -13,25 +13,30 @@ from kivy.uix.spinner import Spinner
 import json
 from time import sleep
 
+import json
 
 # user = {
-#         "User_ID": int(),
-#         "User_Name": str(),
-#         "User_Password": str(),
-#         "User_Frase": str(),
-#         "User_About": str(),
-#         "User_Happy_Birthday": {
-#             "Birthday_Day": int(),
-#             "Birthday_Moon": int(),
-#             "Birthday_Year": int()
-#         }
+#     "User_ID": int(),
+#     "User_Name": str(),
+#     "User_Password": str(),
+#     "User_Frase": str(),
+#     "User_About": str(),
+#     "User_Happy_Birthday": {
+#         "Birthday_Day": int(),
+#         "Birthday_Moon": int(),
+#         "Birthday_Year": int()
+#     }
 # }
 
-# with open("JSON\\user_info.json", "w") as file:
-#     json.dump(user, file, sort_keys=True)
+# # Виправлено шлях до файлу, використовуючи правильний роздільник для Windows
+# # Додано параметр encoding для відкриття файлу
+# with open("JSON\\user_info.json", "w", encoding="utf-8") as file:
+#     json.dump(user, file, sort_keys=True, ensure_ascii=False)
 
-with open('JSON\\user_info.json', 'r') as file:
+
+with open('JSON\\user_info.json', 'r', encoding="utf-8") as file:
     user = json.load(file)
+print(user)
 
 def birth_day_func(birth_day, text):
     print(text)
@@ -113,7 +118,7 @@ class WriteUserInfoScreen(Screen):
         self.skip_rewrite()
 
     def skip_rewrite(self):
-         self.manager.current = "watch_profile"
+        self.manager.current = "watch_profile"
 
 class ProfileUserInfoScreen(Screen):
     def __init__(self, **kwargs):
@@ -123,11 +128,11 @@ class ProfileUserInfoScreen(Screen):
 
         main_col = BoxLayout(orientation="vertical")
 
-        user_name = Label(text="Користувач: @"+user["User_Name"])
-        user_hb = Label(text=str(user["User_Happy_Birthday"]["Birthday_Day"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Moon"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Year"]))
-        user_pas = Label(text="Користувацький пароль: " + user["User_Password"])
-        user_frase = Label(text="Корисувач каже: " + user["User_Frase"])
-        user_information = TextInput(readonly=True, text="Про користувача: "+user["User_About"])
+        user_name = Label(text="Користувач: @"+user["User_Name"], font_name="Arial")
+        user_hb = Label(text=str(user["User_Happy_Birthday"]["Birthday_Day"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Moon"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Year"]), font_name="Arial")
+        user_pas = Label(text="Користувацький пароль: " + user["User_Password"], font_name="Arial")
+        user_frase = Label(text="Корисувач каже: " + user["User_Frase"], font_name="Arial")
+        user_information = TextInput(readonly=True, text="Про користувача: "+user["User_About"], font_name="Arial")
 
         main_col.add_widget(user_name)
         main_col.add_widget(user_hb)
