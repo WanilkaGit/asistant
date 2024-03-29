@@ -8,6 +8,7 @@ from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
 from kivy.uix.switch import Switch
 from kivy.uix.label import Label
+from kivy.uix.spinner import Spinner
 
 import json
 
@@ -35,25 +36,116 @@ class SettigsScreen(Screen):
         super().__init__(**kwargs)
         main_col = BoxLayout(orientation="vertical")
         self.buttons_label = Button(text="Кнопка")
-        self.btns_inp_bgcol = TextInput(hint_text="В кажи колір фону кнопопк")
-        self.btns_inp_txtcol = TextInput(hint_text="В кажи колір тексту")
+        self.btns_line = GridLayout(rows=1)
+
+
+        self.btns_bgcol_r = Spinner(text="R")
+        for i in range(1, 256):
+            self.btns_bgcol_r.values.append(str(i))
+        self.btns_bgcol_g = Spinner(text="G")
+        for i in range(1, 256):
+            self.btns_bgcol_g.values.append(str(i))
+        self.btns_bgcol_b = Spinner(text="B")
+        for i in range(1, 256):
+            self.btns_bgcol_b.values.append(str(i))
+        self.btns_bgcol_h = Spinner(text="H")
+        for i in range(1, 101):
+            self.btns_bgcol_h.values.append(str(i))
+
+
+        self.btns_txtcol_r = Spinner(text="R")
+        for i in range(1, 256):
+            self.btns_txtcol_r.values.append(str(i))
+        self.btns_txtcol_g = Spinner(text="G")
+        for i in range(1, 256):
+            self.btns_txtcol_g.values.append(str(i))
+        self.btns_txtcol_b = Spinner(text="B")
+        for i in range(1, 256):
+            self.btns_txtcol_b.values.append(str(i))
+        self.btns_txtcol_h = Spinner(text="H")
+        for i in range(1, 101):
+            self.btns_txtcol_h.values.append(str(i))
         main_col.add_widget(self.buttons_label)
-        main_col.add_widget(self.btns_inp_bgcol)
-        main_col.add_widget(self.btns_inp_txtcol)
+        main_col.add_widget(self.btns_line)
         
         self.text_input_label = TextInput(text="Поле вводу")
-        self.txts_inp_inp_bgcol = TextInput(hint_text="В кажи колір фону Полей введення")
-        self.txts_inp_inp_txtcol = TextInput(hint_text="В кажи колір тексту")
+        self.txts_inp_line = GridLayout(rows=1)
+
+        self.bgcol_r = Spinner(text="R")
+        for i in range(1, 256):
+            self.bgcol_r.values.append(str(i))
+
+        self.bgcol_g = Spinner(text="G")
+        for i in range(1, 256):
+            self.bgcol_g.values.append(str(i))
+
+        self.bgcol_b = Spinner(text="B")
+        for i in range(1, 256):
+            self.bgcol_b.values.append(str(i))
+
+        self.bgcol_h = Spinner(text="H")
+        for i in range(1, 101):
+            self.bgcol_h.values.append(str(i))
+
+
+        self.txtcol_r = Spinner(text="R")
+        for i in range(1, 256):
+            self.txtcol_r.values.append(str(i))
+
+        self.txtcol_g = Spinner(text="G")
+        for i in range(1, 256):
+            self.txtcol_g.values.append(str(i))
+
+        self.txtcol_b = Spinner(text="B")
+        for i in range(1, 256):
+            self.txtcol_b.values.append(str(i))
+
+        self.txtcol_h = Spinner(text="H")
+        for i in range(1, 101):
+            self.txtcol_h.values.append(str(i))
+
         main_col.add_widget(self.text_input_label)
-        main_col.add_widget(self.txts_inp_inp_bgcol)
-        main_col.add_widget(self.txts_inp_inp_txtcol)
+        main_col.add_widget(self.txts_inp_line)
         
         self.label_label = Label(text="Заголовок")
-        self.lbls_inp_bgcol = TextInput(hint_text="В кажи колір фону заголовків")
-        self.lbls_inp_txtcol = TextInput(hint_text="В кажи колір тексту")
+        self.lbls_line = GridLayout(rows=1)
+        self.bgcol_r = Spinner(text="R")
+        for i in range(1, 256):
+            self.bgcol_r.values.append(str(i))
+
+        self.bgcol_g = Spinner(text="G")
+        for i in range(1, 256):
+            self.bgcol_g.values.append(str(i))
+
+        self.bgcol_b = Spinner(text="B")
+        for i in range(1, 256):
+            self.bgcol_b.values.append(str(i))
+
+        self.bgcol_h = Spinner(text="H")
+        for i in range(1, 101):
+            self.bgcol_h.values.append(str(i))
+
+
+        self.txtcol_r = Spinner(text="R")
+        for i in range(1, 256):
+            self.txtcol_r.values.append(str(i))
+
+        self.txtcol_g = Spinner(text="G")
+        for i in range(1, 256):
+            self.txtcol_g.values.append(str(i))
+
+        self.txtcol_b = Spinner(text="B")
+        for i in range(1, 256):
+            self.txtcol_b.values.append(str(i))
+
+        self.txtcol_h = Spinner(text="H")
+        for i in range(1, 101):
+            self.txtcol_h.values.append(str(i))
+
+
         main_col.add_widget(self.label_label)
-        main_col.add_widget(self.lbls_inp_bgcol)
-        main_col.add_widget(self.lbls_inp_txtcol)
+        main_col.add_widget(self.lbls_line)
+
         
         self.switcher_label = Switch()
         main_col.add_widget(self.switcher_label)
@@ -65,7 +157,7 @@ class SettigsScreen(Screen):
         self.add_widget(main_col)
 
     def save_settings(self):
-        settings["buttons"]["bg_color"] = self.btns_inp_bgcol.text()  
+        settings["buttons"]["bg_color"] = self.btns_inp_bgcol.text()
         print(str(self.btns_inp_bgcol.text()))
         settings["buttons"]["text_color"] = self.btns_inp_txtcol.text()
         print(str(self.btns_inp_txtcol.text()))

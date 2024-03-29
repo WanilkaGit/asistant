@@ -61,17 +61,17 @@ class WriteUserInfoScreen(Screen):
         user_birth_row =GridLayout(rows=1, cols=3)
 
         self.birth_day = Spinner(text="День народження")
-        for i in range(1, 31):
+        for i in range(1, 32):
             self.birth_day.values.append(str(i))
         self.birth_day.bind(text=birth_day_func)
 
         self.birth_mounth = Spinner(text="Місяць народження")
-        for i in range(1, 12):
+        for i in range(1, 13):
             self.birth_mounth.values.append(str(i))
         self.birth_mounth.bind(text=birth_mounth_func)
 
         self.birth_year = Spinner(text="Рік народження")
-        for i in range(1, 24):
+        for i in range(1, 25):
             self.birth_year.values.append(str(i))
         self.birth_year.bind(text=birth_year_func)
         user_birth_row.add_widget(self.birth_day)
