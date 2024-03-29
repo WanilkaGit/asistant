@@ -1,5 +1,3 @@
-import os
-print("Поточний каталог:", os.getcwd(JSON\\notes.json))
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 

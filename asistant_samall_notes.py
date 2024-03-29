@@ -14,15 +14,15 @@ from kivy.core.window import Window
 from kivy.uix.popup import Popup
 import json
 
-# notes = {
-#     "Ласкаво просимо!": {
-#         "текст": "Це найкращий додаток для заміток у світі!"
-#     }
-# }
+notes = {
+    "Ласкаво просимо!": {
+        "текст": "Це найкращий додаток для заміток у світі!"
+    }
+}
 
-# # Записуємо дані у файл
-# with open("JSON\\notes.json", "w", encoding='utf-8') as file:
-#     json.dump(notes, file, ensure_ascii=False, indent=4)
+# Записуємо дані у файл
+with open("JSON\\notes.json", "w") as file:
+    json.dump(notes, file, sort_keys=True)
 
 # Читаємо дані з файлу
 with open('JSON\\notes.json', 'r', encoding='utf-8') as file:
