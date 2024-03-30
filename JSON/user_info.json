@@ -1,12 +1,12 @@
 {
-    "User_About": "ПКРТАЬРПО",
-    "User_Frase": "АФПІВАТПЬР",
+    "User_About": "",
+    "User_Frase": "",
     "User_Happy_Birthday": {
-        "Birthday_Day": "4",
-        "Birthday_Moon": "5",
-        "Birthday_Year": "1"
+        "Birthday_Day": "День народження",
+        "Birthday_Moon": "Місяць народження",
+        "Birthday_Year": "Рік народження"
     },
     "User_ID": 0,
-    "User_Name": "vdsbfgnchmvjbk",
-    "User_Password": "zhdxnfchmgvjm"
+    "User_Name": "",
+    "User_Password": ""
 }

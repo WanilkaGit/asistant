@@ -12,6 +12,8 @@ from asistant_small_foto_editor import *
 from asistant_samall_notes import *
 from asistant_small_random import *
 
+from asistant_settings import *
+from asistant_user import *
 
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
@@ -56,10 +58,10 @@ class MenuScreen(Screen):
 
 
     def settings(self):
-        pass
+        self.manager.current = 'settings'
 
     def profile(self):
-        pass
+        self.manager.current = 'user'
 
     def start_calc(self):
         self.manager.current = 'calculator'
@@ -82,6 +84,9 @@ class ProjectAsistant(App):
         sm.add_widget(NotesScreen(name="notes"))
         sm.add_widget(RandomScreen(name="random"))
         sm.add_widget(KubeScreen(name="kube"))
+        sm.add_widget(SettigsScreen(name="settings"))
+        sm.add_widget(WriteUserInfoScreen(name="user"))
+        sm.add_widget(ProfileUserInfoScreen(name="watch_profile"))
         return sm
 
 if __name__ == "__main__":
