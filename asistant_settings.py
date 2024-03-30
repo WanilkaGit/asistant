@@ -31,205 +31,59 @@ import json
 with open('JSON\\settings.json', 'r') as file:
     settings = json.load(file)
 
-def btns_func_bgcol_r(text, btns_bgcol_r):
-    print(text)
-    settings["buttons"]["bg_color"][0] = float(text) / 256
-
-def btns_func_bgcol_g(text, btns_bgcol_g):
-    print(text)
-    settings["buttons"]["bg_color"][1] = float(text) / 256
-
-def btns_func_bgcol_b(text, btns_bgcol_b):
-    print(text)
-    settings["buttons"]["bg_color"][2] = float(text) / 256
-
-def btns_func_bgcol_r(text, btns_bgcol_r):
-    print(text)
-    settings["buttons"]["bg_color"][3] = float(text) / 100
-
-
-def txts_inp_func_bgcol_r(text, txts_bgcol_r):
-    print(text)
-    settings["textinput"]["bg_color"][0] = float(text) / 256
-
-def txts_inp_func_bgcol_g(text, txts_bgcol_g):
-    print(text)
-    settings["textinput"]["bg_color"][1] = float(text) / 256
-
-def txts_inp_func_bgcol_b(text, txts_bgcol_b):
-    print(text)
-    settings["textinput"]["bg_color"][2] = float(text) / 256
-
-def txts_inp_func_bgcol_h(text, txts_bgcol_h):
-    print(text)
-    settings["textinput"]["bg_color"][3] = float(text) / 100
-
-
-def lbls_func_bgcol_r(text, txts_bgcol_r):
-    print(text)
-    settings["textinput"]["bg_color"][0] = float(text) / 256
-
-def lbls_func_bgcol_g(text, txts_bgcol_g):
-    print(text)
-    settings["textinput"]["bg_color"][1] = float(text) / 256
-
-def lbls_func_bgcol_b(text, txts_bgcol_b):
-    print(text)
-    settings["textinput"]["bg_color"][2] = float(text) / 256
-
-def lbls_func_bgcol_h(text, txts_bgcol_h):
-    print(text)
-    settings["textinput"]["bg_color"][3] = float(text) / 100
-
-
 class SettigsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         main_col = BoxLayout(orientation="vertical")
-
-####################### BUTTONS #######################
-        
         self.buttons_label = Button(text="Кнопка")
-        self.btns_line = GridLayout(rows=1)
+        self.btns_line = GridLayout(rows=2, cols=4)
+        self.btns_bgcol_r = TextInput(hint_text="R", input_type='number')
+        self.btns_bgcol_g = TextInput(hint_text="G", input_type='number')
+        self.btns_bgcol_b = TextInput(hint_text="B", input_type='number')
+        self.btns_bgcol_h = TextInput(hint_text="H", input_type='number')
 
-
-        self.btns_bgcol_r = Spinner(text="R")
-        for i in range(1, 256):
-            self.btns_bgcol_r.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-        self.btns_bgcol_g = Spinner(text="G")
-        for i in range(1, 256):
-            self.btns_bgcol_g.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-        self.btns_bgcol_b = Spinner(text="B")
-        for i in range(1, 256):
-            self.btns_bgcol_b.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-        self.btns_bgcol_h = Spinner(text="H")
-        for i in range(1, 101):
-            self.btns_bgcol_h.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-
-
-        self.btns_txtcol_r = Spinner(text="R")
-        for i in range(1, 256):
-            self.btns_txtcol_r.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-        self.btns_txtcol_g = Spinner(text="G")
-        for i in range(1, 256):
-            self.btns_txtcol_g.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-        self.btns_txtcol_b = Spinner(text="B")
-        for i in range(1, 256):
-            self.btns_txtcol_b.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-        self.btns_txtcol_h = Spinner(text="H")
-        for i in range(1, 101):
-            self.btns_txtcol_h.values.append(str(i))
-            self.btns_bgcol_r.bind(text=btns_func_bgcol_r)
-        main_col.add_widget(self.buttons_label)
-        main_col.add_widget(self.btns_line)
-
-####################### TEXT INPUTS #######################
+        self.btns_txtscol_r = TextInput(hint_text="R", input_type='number')
+        self.btns_txtscol_g = TextInput(hint_text="G", input_type='number')
+        self.btns_txtscol_b = TextInput(hint_text="B", input_type='number')
+        self.btns_txtscol_h = TextInput(hint_text="H", input_type='number')
 
         self.text_input_label = TextInput(text="Поле вводу")
         self.txts_inp_line = GridLayout(rows=1)
+        self.txts_inp_bgcol_r = TextInput(hint_text="R", input_type='number')
+        self.txts_inp_bgcol_g = TextInput(hint_text="G", input_type='number')
+        self.txts_inp_bgcol_b = TextInput(hint_text="B", input_type='number')
+        self.txts_inp_bgcol_h = TextInput(hint_text="H", input_type='number')
 
-        self.txts_inp_bgcol_r = Spinner(text="R")
-        for i in range(1, 256):
-            self.txts_inpbgcol_r.values.append(str(i))
-            self.txts_inpbgcol_r.bind(text=txts_inp_func_bgcol_r)
+        self.txts_inp_txtcol_r = TextInput(hint_text="R", input_type='number')
+        self.txts_inp_txtcol_g = TextInput(hint_text="G", input_type='number')
+        self.txts_inp_txtcol_b = TextInput(hint_text="B", input_type='number')
+        self.txts_inp_txtcol_h = TextInput(hint_text="H", input_type='number')
 
-        self.txts_inpbgcol_g = Spinner(text="G")
-        for i in range(1, 256):
-            self.txts_inpbgcol_g.values.append(str(i))
-            self.txts_inp_bgcol_r.bind(text=txts_inp_func_bgcol_r)
-
-        self.txts_inp_bgcol_b = Spinner(text="B")
-        for i in range(1, 256):
-            self.txts_inp_bgcol_b.values.append(str(i))
-            self.txts_inp_bgcol_r.bind(text=txts_inp_func_bgcol_r)
-
-        self.txts_inp_bgcol_h = Spinner(text="H")
-        for i in range(1, 101):
-            self.txts_inp_bgcol_h.values.append(str(i))
-            self.txts_inp_bgcol_r.bind(text=txts_inp_func_bgcol_r)
-
-
-        self.txts_inp_txtcol_r = Spinner(text="R")
-        for i in range(1, 256):
-            self.txts_inp_txtcol_r.values.append(str(i))
-            self.txts_inp_bgcol_r.bind(text=txts_inp_func_bgcol_r)
-
-        self.txts_inp_txtcol_g = Spinner(text="G")
-        for i in range(1, 256):
-            self.txts_inp_txtcol_g.values.append(str(i))
-            self.txts_inp_bgcol_r.bind(text=txts_inp_func_bgcol_r)
-
-        self.txts_inp_txtcol_b = Spinner(text="B")
-        for i in range(1, 256):
-            self.txts_inp_txtcol_b.values.append(str(i))
-            self.txts_inp_bgcol_r.bind(text=txts_inp_func_bgcol_r)
-
-        self.txts_inp_txtcol_h = Spinner(text="H")
-        for i in range(1, 101):
-            self.txtcol_h.values.append(str(i))
-            self.txts_inp_bgcol_r.bind(text=txts_inp_func_bgcol_r)
-
-        main_col.add_widget(self.text_input_label)
-        main_col.add_widget(self.txts_inp_line)
-
-####################### LBLS #######################
 
         self.label_label = Label(text="Заголовок")
         self.lbls_line = GridLayout(rows=1)
+        self.lbls_bgcol_r = TextInput(hint_text="R", input_type='number')
+        self.lbls_bgcol_g = TextInput(hint_text="G", input_type='number')
+        self.lbls_bgcol_b = TextInput(hint_text="B", input_type='number')
+        self.lbls_bgcol_h = TextInput(hint_text="H", input_type='number')
 
-        self.lbls_bgcol_r = Spinner(text="R")
-        for i in range(1, 256):
-            self.lbls_bgcol_r.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
+        self.lbls_txtcol_r = TextInput(hint_text="R", input_type='number')
+        self.lbls_txtcol_g = TextInput(hint_text="G", input_type='number')
+        self.lbls_txtcol_b = TextInput(hint_text="B", input_type='number')
+        self.lbls_txtcol_h = TextInput(hint_text="H", input_type='number')
 
-        self.lbls_bgcol_g = Spinner(text="G")
-        for i in range(1, 256):
-            self.lbls_bgcol_g.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
+        self.lbls_line.add_widget(self.lbls_bgcol_r)
+        self.lbls_line.add_widget(self.lbls_bgcol_g)
+        self.lbls_line.add_widget(self.lbls_bgcol_b)
+        self.lbls_line.add_widget(self.lbls_bgcol_h)
 
-        self.lbls_bgcol_b = Spinner(text="B")
-        for i in range(1, 256):
-            self.lbls_bgcol_b.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
-
-        self.lbls_bgcol_h = Spinner(text="H")
-        for i in range(1, 101):
-            self.lbls_bgcol_h.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
-
-
-        self.lbls_txtcol_r = Spinner(text="R")
-        for i in range(1, 256):
-            self.txtcol_r.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
-
-        self.lbls_txtcol_g = Spinner(text="G")
-        for i in range(1, 256):
-            self.txtcol_g.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
-
-        self.lbls_txtcol_b = Spinner(text="B")
-        for i in range(1, 256):
-            self.lbls_txtcol_b.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
-
-        self.lbls_txtcol_h = Spinner(text="H")
-        for i in range(1, 101):
-            self.lbls_txtcol_h.values.append(str(i))
-            self.lbls_bgcol_r.bind(text=lbls_func_bgcol_r)
+        self.lbls_line.add_widget(self.lbls_txtcol_r)
+        self.lbls_line.add_widget(self.lbls_txtcol_g)
+        self.lbls_line.add_widget(self.lbls_txtcol_b)
+        self.lbls_line.add_widget(self.lbls_txtcol_h)
 
 
-        main_col.add_widget(self.label_label)
-        main_col.add_widget(self.lbls_line)
 
-        
         self.switcher_label = Switch()
         main_col.add_widget(self.switcher_label)
 
