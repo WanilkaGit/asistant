@@ -12,21 +12,21 @@ from kivy.uix.spinner import Spinner
 
 import json
 
-settings = {
-        "buttons":{
-            "bg_color": [float(), float(), float(), float()],
-            "text_color": [float(), float(), float(), float()]},
-        "textinput":{
-            "bg_color": [float(), float(), float(), float()],
-            "text_color": [float(), float(), float(), float()]},
-        "labels": {
-            "bg_color": [float(), float(), float(), float()],
-            "text_color": [float(), float(), float(), float()]},
-        "switchers": {
-            "bg_color": [float(), float(), float(), float()]}}
+# settings = {
+#         "buttons":{
+#             "bg_color": [float(), float(), float(), float()],
+#             "text_color": [float(), float(), float(), float()]},
+#         "textinput":{
+#             "bg_color": [float(), float(), float(), float()],
+#             "text_color": [float(), float(), float(), float()]},
+#         "labels": {
+#             "bg_color": [float(), float(), float(), float()],
+#             "text_color": [float(), float(), float(), float()]},
+#         "switchers": {
+#             "bg_color": [float(), float(), float(), float()]}}
 
-with open("JSON\\settings.json", "w") as file:
-    json.dump(settings, file, sort_keys=True)
+# with open("JSON\\settings.json", "w") as file:
+#     json.dump(settings, file, sort_keys=True)
 
 with open('JSON\\settings.json', 'r') as file:
     settings = json.load(file)
