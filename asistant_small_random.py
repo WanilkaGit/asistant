@@ -11,15 +11,13 @@ class RandomScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         chose_lbl = Label(text="",font_size=50)
-        self.ranint = Button(text="кубик 1/6",  font_size=100)
+        self.ranint = Button(text="Кубик",  font_size=100)
         self.ranint.on_press = self.next
         self.one_for_4 = Button(text="1 з 4", font_size=100)
         self.btn_sharp = Button(text="", font_size=10)
 
         col1 = BoxLayout(orientation="vertical")
-        col1.add_widget(chose_lbl)
         col1.add_widget(self.ranint)
-        col1.add_widget(self.one_for_4)
         self.add_widget(col1)
     def next(self):# прописуємо фунції для двох кнопок 
         self.manager.current = "kube"# ереключення на натсупний екран
