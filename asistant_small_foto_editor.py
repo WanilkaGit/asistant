@@ -93,14 +93,19 @@ class EditorScreen(Screen):
     def load_image(self, dir, filename):
         self.dir = dir
         self.filename = filename
-        image_path = os.path.join(dir, filename)
+        image_path = os.path.join(dir, self.save_dir, filename)
+        if not os.path.exists(image_path):
+            image_path = os.path.join(dir, filename)
+        print(image_path)
         self.image = PILImage.open(image_path)
 
     def show_image(self, path):
-        print(os.path.split(path))
         dir, filename = os.path.split(path)
         self.load_image(dir, filename)
-        self.photo_zone.source = os.path.join(dir, filename)
+        image_path = os.path.join(dir, self.save_dir, filename)
+        if not os.path.exists(image_path):
+            image_path = os.path.join(dir, filename)
+        self.photo_zone.source = image_path
         self.photo_zone.reload()
 
     def save_image(self):
@@ -112,14 +117,12 @@ class EditorScreen(Screen):
 
     def showFileNamesList(self):
         self.workdir = self.file_chooser.path
-        print(self.workdir)
         if self.workdir:
             extensions = [".jpg", ".png", ".jpeg", ".bmp", ".gif", ".PNG"]
             filenames = [filename for filename in os.listdir(self.file_chooser.path) if os.path.splitext(filename)[1].lower() in extensions]
             for filename in filenames:
                 self.b1 = ToggleButton(text=filename, group="cipher", size_hint_y=None)
                 self.b1.path = self.file_chooser.path+"/"+filename # тут шлях до файлу
-                print(self.b1.path)
                 self.list_files.add_widget(self.b1)
                 self.btns_list.append(self.b1)
                 path = os.path.join(self.workdir, filename)
@@ -162,7 +165,6 @@ class EditorScreen(Screen):
         self.image = self.image.filter(ImageFilter.BLUR)
         save_path = os.path.join(self.workdir, self.save_dir, self.filename)
         self.b1.path = save_path
-        print(self.b1.path)
         self.save_image()
         self.show_image(save_path)
 
