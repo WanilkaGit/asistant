@@ -45,7 +45,7 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
         super().__init__(**kwargs)# копіюємо кістяк супер класу також
 
         self.list_note = []
-        self.list_teg = []
+
 
         text_field_lbl = Label(text="for write", font_size=50, size_hint=(1, 0.1))
         self.text_field = TextInput(multiline=True, hint_text="НАПИШІТЬ ЩОСЬ... будь ласка")

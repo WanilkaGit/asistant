@@ -8,8 +8,6 @@ from kivy.uix.gridlayout import GridLayout
 from kivy.uix.button import Button
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.image import Image as KivyImage
-from kivy.graphics.texture import Texture
-from kivy.uix.widget import Widget
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.popup import Popup
 from kivy.uix.filechooser import FileChooserIconView
@@ -162,7 +160,9 @@ class EditorScreen(Screen):
         self.show_image(save_path)
 
     def do_blur(self):
+
         self.image = self.image.filter(ImageFilter.BLUR)
+        
         save_path = os.path.join(self.workdir, self.save_dir, self.filename)
         self.b1.path = save_path
         self.save_image()
