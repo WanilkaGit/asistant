@@ -25,7 +25,7 @@ import json
 #     json.dump(notes, file, sort_keys=True)
 
 # Читаємо дані з файлу
-with open('JSON\\notes.json', 'r', encoding='utf-8') as file:
+with open('JSON//notes.json', 'r', encoding='utf-8') as file:
     notes = json.load(file)
     print(notes["Ласкаво просимо!"]["текст"])
 
@@ -112,8 +112,6 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
                         for word2 in value.split():
                             if word2 == word:
                                 self.massege_lbl.text = (str(self.list_note))
-                                self.note_lbl = SelectableLabel(text=note, size_hint_y = None)
-                                self.note_lbl.bind(on_touch_down=lambda instance, touch: self.note_lbl.on_touch_down(touch))  # Bind the touch event
                                 self.list_note.append(note)
                                 self.list_notes.add_widget(self.note_lbl)
             else:

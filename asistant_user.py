@@ -34,7 +34,7 @@ import json
 #     json.dump(user, file, sort_keys=True, ensure_ascii=False)
 
 
-with open('JSON\\user_info.json', 'r', encoding="utf-8") as file:
+with open('JSON//user_info.json', 'r', encoding="utf-8") as file:
     user = json.load(file)
 print(user)
 
@@ -123,16 +123,16 @@ class WriteUserInfoScreen(Screen):
 class ProfileUserInfoScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        with open('JSON\\user_info.json', 'r') as file:
+        with open('JSON//user_info.json', 'r') as file:
             user = json.load(file)
 
         main_col = BoxLayout(orientation="vertical")
 
-        user_name = Label(text="Користувач: @"+user["User_Name"], font_name="Arial")
-        user_hb = Label(text=str(user["User_Happy_Birthday"]["Birthday_Day"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Moon"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Year"]), font_name="Arial")
-        user_pas = Label(text="Користувацький пароль: " + user["User_Password"], font_name="Arial")
-        user_frase = Label(text="Корисувач каже: " + user["User_Frase"], font_name="Arial")
-        user_information = TextInput(readonly=True, text="Про користувача: "+user["User_About"], font_name="Arial")
+        user_name = Label(text="Користувач: @"+user["User_Name"])
+        user_hb = Label(text=str(user["User_Happy_Birthday"]["Birthday_Day"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Moon"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Year"]))
+        user_pas = Label(text="Користувацький пароль: " + user["User_Password"])
+        user_frase = Label(text="Корисувач каже: " + user["User_Frase"])
+        user_information = TextInput(readonly=True, text="Про користувача: "+user["User_About"])
 
         main_col.add_widget(user_name)
         main_col.add_widget(user_hb)
@@ -146,8 +146,8 @@ class ProfileUserInfoScreen(Screen):
 class UserInfoApp(App):
     def build(self):
         sm = ScreenManager()
-        sm.add_widget(WriteUserInfoScreen(name="main"))
         sm.add_widget(ProfileUserInfoScreen(name="watch_profile"))
+        sm.add_widget(WriteUserInfoScreen(name="main"))
         return sm
     
 if __name__ == "__main__":

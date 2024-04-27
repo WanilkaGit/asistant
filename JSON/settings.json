@@ -1,1 +1,1 @@
-{"buttons": {"bg_color": [0, 0, 0, 1], "text_color": [1, 1, 1, 1]}, "labels": {"bg_color": [0, 0, 0, 1], "text_color": [1, 1, 1, 1]}, "switchers": {"bg_color": [0, 0, 0, 1]}, "textinput": {"bg_color": [0, 0, 0, 1], "text_color": [1, 1, 1, 1]}}
+{"buttons": {"bg_color": "", "text_color": ""}, "labels": {"bg_color": "", "text_color": ""}, "textinput": {"bg_color": "", "text_color": ""}}
