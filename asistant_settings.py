@@ -24,7 +24,8 @@ import json
 #             "text_color": str()},
 #         "labels": {
 #             "bg_color": str(),
-#             "text_color": str()}}
+#             "text_color": str()},
+#         "app_theme": str()}
 
 # with open("JSON\\settings.json", "w") as file:
 #     json.dump(settings, file, sort_keys=True)
@@ -57,6 +58,8 @@ class SettigsScreen(Screen):
         """THEME OPTIONS"""
         self.dark_white = Switch()
         self.dark_white.bind(active=self.switch_theme)
+
+
         main_col.add_widget(self.dark_white)
         front_grid = GridLayout(rows=1)
         lbl_front = Label(text="Базовий")
@@ -64,81 +67,57 @@ class SettigsScreen(Screen):
         for color in self.colors:
             self.front_radios = CheckBox(group="front_color", color=color)
             self.front_radios.text = color
+            self.front_radios.bind(active=self.save_front_theme)
             front_grid.add_widget(self.front_radios)
         main_col.add_widget(front_grid)
 
 
         back_grid = GridLayout(rows=1)
-        lbl_back = Label(text="Внутрішній")
+        lbl_back = Label(text="Допоміжний")
         back_grid.add_widget(lbl_back)
         for color in self.colors:
             self.back_radios = CheckBox(group="back_color", color=color)
-            self.front_radios.text = color
+            self.back_radios.text = color
+            self.back_radios.bind(active=self.save_back_theme)
             back_grid.add_widget(self.back_radios)
         main_col.add_widget(back_grid)
         """THEME OPTIONS"""
 
-
         self.add_widget(main_col)
 
+
+    """THEME FUNC"""
     def switch_theme(self, instance, value):
         if value:
             Window.clearcolor = "white"
+            settings["app_theme"] = "white"
         else:
             Window.clearcolor = "black"
+            settings["app_theme"] = "black"
 
-    def save_settings(self):
-        settings["textinput"]["bg_color"][0] = float(self.txts_inp_bgcol_r.text) / 255
-        print(float(self.txts_inp_bgcol_r.text)/255)
-        settings["textinput"]["bg_color"][1] = float(self.txts_inp_bgcol_g.text) / 255
-        print(float(self.txts_inp_bgcol_g.text)/255)
-        settings["textinput"]["bg_color"][2] = float(self.txts_inp_bgcol_b.text) / 255
-        print(float(self.txts_inp_bgcol_b.text)/255)
-        settings["textinput"]["bg_color"][3] = float(self.txts_inp_bgcol_h.text) / 100
-        print(float(self.txts_inp_bgcol_h.text)/100)
 
-        settings["textinput"]["text_color"][0] = float(self.txts_inp_txtcol_r.text) / 255
-        print(float(self.txts_inp_txtcol_r.text)/255)
-        settings["textinput"]["text_color"][0] = float(self.txts_inp_txtcol_r.text) / 255
-        print(float(self.txts_inp_txtcol_r.text)/255)
-        settings["textinput"]["text_color"][0] = float(self.txts_inp_txtcol_r.text) / 255
-        print(float(self.txts_inp_txtcol_r.text)/255)
-        settings["textinput"]["text_color"][0] = float(self.txts_inp_txtcol_r.text) / 255
-        print(float(self.txts_inp_txtcol_r.text)/255)
-
+    def save_front_theme(self, instance, value):
+        settings["buttons"]["bg_color"] = instance.text
+        print(instance.text)
+        settings["textinput"]["text_color"] = instance.text
+        print(instance.text)
+        settings["labels"]["text_color"] = instance.text
+        print(instance.text)
         with open("JSON\\settings.json", "w") as file:
             json.dump(settings, file, sort_keys=True)
 
-    def on_switch_active (self, instance, value):
-        print(value)
-        if value:
-            settings = {
-                    "buttons":{
-                        "bg_color": [0, 0, 0, 1],
-                        "text_color": [1, 1, 1, 1]},
-                    "textinput":{
-                        "bg_color": [0, 0, 0, 1],
-                        "text_color": [1, 1, 1, 1]},
-                    "labels": {
-                        "bg_color": [0, 0, 0, 1],
-                        "text_color": [1, 1, 1, 1]},
-                    "switchers": {
-                        "bg_color": [0, 0, 0, 1]}}
-        else:
-            settings = {
-                    "buttons":{
-                        "bg_color": [1, 1, 1, 1],
-                        "text_color": [0, 0, 0, 1]},
-                    "textinput":{
-                        "bg_color": [1, 1, 1, 1],
-                        "text_color": [0, 0, 0, 1]},
-                    "labels": {
-                        "bg_color": [1, 1, 1, 1],
-                        "text_color": [0, 0, 0, 1]},
-                    "switchers": {
-                        "bg_color": [0, 0, 0, 1]}}
+
+    def save_back_theme(self, instance, value):
+        settings["buttons"]["text_color"] = instance.text
+        print(instance.text)
+        settings["textinput"]["bg_color"] = instance.text
+        print(instance.text)
+        settings["labels"]["bg_color"] = instance.text
+        print(instance.text)
         with open("JSON\\settings.json", "w") as file:
             json.dump(settings, file, sort_keys=True)
+    """THEME FUNC"""
+
 
 class SettingsApp(App):
     def build(self):
