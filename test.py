@@ -10,7 +10,7 @@ with open('JSON//settings.json', 'r') as file:
 class TestApp(App):
     def build(self):
         # Створення кнопки
-        btn = Label(text='Натисни мене', color=settings["labels"]["bg_color"], size_hint=(0.5, 0.5))
+        btn = Label(text='Натисни мене', color=settings["labels"]["text_color"], size_hint=(0.5, 0.5))
         
         # Додавання події на натискання кнопки
         btn.bind(on_press=self.on_button_press)
