@@ -29,20 +29,20 @@ class EditorScreen(Screen):
         self.photo_zone = KivyImage(source=None, keep_data=False)
         self.photo_zone.fit_mode = "scale-down"
 
-        self.btn_folder = Button(text="Папочки", size_hint=(1, 0.1))
+        self.btn_folder = Button(text="Папочки", size_hint=(1, 0.1), background_normal="blue")
         self.list_files = GridLayout(cols=1, size_hint_y=None)
         self.list_files.bind(minimum_height = self.list_files.setter("height"))
         list_f_view = ScrollView()
         list_f_view.add_widget(self.list_files)
 
-        self.btn_detail = Button(text="Деталізація")
-        self.btn_256_color = Button(text="Зжимання")
-        self.btn_left = Button(text="Вліво")
-        self.btn_right = Button(text="Вправо")
-        self.btn_mirror = Button(text="Люстерко")
-        self.btn_sharp = Button(text="Різкість")
-        self.btn_b_w = Button(text="Ч/Б")
-        self.btn_blur = Button(text="Розмиття")
+        self.btn_detail = Button(text="Деталізація", background_normal="blue")
+        self.btn_256_color = Button(text="Зжимання", background_normal="blue")
+        self.btn_left = Button(text="Вліво", background_normal="blue")
+        self.btn_right = Button(text="Вправо", background_normal="blue")
+        self.btn_mirror = Button(text="Люстерко", background_normal="blue")
+        self.btn_sharp = Button(text="Різкість", background_normal="blue")
+        self.btn_b_w = Button(text="Ч/Б", background_normal="blue")
+        self.btn_blur = Button(text="Розмиття", background_normal="blue")
 
         self.btn_left.on_press = self.do_left
         self.btn_right.on_press = self.do_right
@@ -80,7 +80,7 @@ class EditorScreen(Screen):
         self.file_chooser = FileChooserIconView()
         self.file_chooser.path = "d:"
         self.file_chooser.dirselect = True
-        button = Button(text="Підтвердити вибір", size_hint=(1, 0.2))
+        button = Button(text="Підтвердити вибір", size_hint=(1, 0.2), background_normal="blue")
         button.on_press = self.showFileNamesList
         layout.add_widget(self.file_chooser)
         layout.add_widget(button)

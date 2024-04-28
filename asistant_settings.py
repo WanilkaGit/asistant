@@ -25,7 +25,9 @@ import json
 #         "labels": {
 #             "bg_color": str(),
 #             "text_color": str()},
-#         "app_theme": str()}
+#         "app_theme": str(),
+#         "front_color": str(),
+#         "back_color": str()}
 
 # with open("JSON\\settings.json", "w") as file:
 #     json.dump(settings, file, sort_keys=True)
@@ -47,8 +49,8 @@ class SettigsScreen(Screen):
         tools_row.add_widget(self.info_label)
 
         tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
-        self.setings_btn = Button(text="*", font_size=100)
-        self.profile_btn = Button(text="Me", font_size=50)
+        self.setings_btn = Button(text="*", font_size=100, background_normal="blue")
+        self.profile_btn = Button(text="Me", font_size=50, background_normal="blue")
         tools_row_btns_col.add_widget(self.profile_btn)
         tools_row.add_widget(tools_row_btns_col)
         main_col.add_widget(tools_row)
@@ -56,10 +58,18 @@ class SettigsScreen(Screen):
 
 
         """THEME OPTIONS"""
+        """BLACK/White THEME"""
         self.dark_white = Switch()
+        if settings["app_theme"] == "white":
+            self.dark_white.active = True
+            Window.clearcolor = "white"
+        else:
+            self.dark_white.active = False
+            Window.clearcolor = "black"
         self.dark_white.bind(active=self.switch_theme)
 
 
+        """FRONT THEME"""
         main_col.add_widget(self.dark_white)
         front_grid = GridLayout(rows=1)
         lbl_front = Label(text="Базовий")
@@ -67,17 +77,22 @@ class SettigsScreen(Screen):
         for color in self.colors:
             self.front_radios = CheckBox(group="front_color", color=color)
             self.front_radios.text = color
+            if settings["front_color"] == self.front_radios.text:
+                self.front_radios.active = True
             self.front_radios.bind(active=self.save_front_theme)
             front_grid.add_widget(self.front_radios)
         main_col.add_widget(front_grid)
 
 
+        """BACK THEME"""
         back_grid = GridLayout(rows=1)
         lbl_back = Label(text="Допоміжний")
         back_grid.add_widget(lbl_back)
         for color in self.colors:
             self.back_radios = CheckBox(group="back_color", color=color)
             self.back_radios.text = color
+            if settings["back_color"] == self.back_radios.text:
+                self.back_radios.active = True
             self.back_radios.bind(active=self.save_back_theme)
             back_grid.add_widget(self.back_radios)
         main_col.add_widget(back_grid)
@@ -87,33 +102,34 @@ class SettigsScreen(Screen):
 
 
     """THEME FUNC"""
+    """BLACK/WHITE"""
     def switch_theme(self, instance, value):
         if value:
             Window.clearcolor = "white"
             settings["app_theme"] = "white"
+            with open("JSON\\settings.json", "w") as file:
+                json.dump(settings, file, sort_keys=True)
         else:
             Window.clearcolor = "black"
             settings["app_theme"] = "black"
+            with open("JSON\\settings.json", "w") as file:
+                json.dump(settings, file, sort_keys=True)
 
-
+    """FRONT FUNC"""
     def save_front_theme(self, instance, value):
+        settings["front_color"] = instance.text
         settings["buttons"]["bg_color"] = instance.text
-        print(instance.text)
         settings["textinput"]["text_color"] = instance.text
-        print(instance.text)
         settings["labels"]["text_color"] = instance.text
-        print(instance.text)
         with open("JSON\\settings.json", "w") as file:
             json.dump(settings, file, sort_keys=True)
 
-
+    """BACK FUNC"""
     def save_back_theme(self, instance, value):
+        settings["back_color"] = instance.text
         settings["buttons"]["text_color"] = instance.text
-        print(instance.text)
         settings["textinput"]["bg_color"] = instance.text
-        print(instance.text)
         settings["labels"]["bg_color"] = instance.text
-        print(instance.text)
         with open("JSON\\settings.json", "w") as file:
             json.dump(settings, file, sort_keys=True)
     """THEME FUNC"""

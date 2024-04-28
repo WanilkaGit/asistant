@@ -1,1 +1,1 @@
-{"buttons": {"bg_color": "indigo", "text_color": "indigo"}, "labels": {"bg_color": "indigo", "text_color": "indigo"}, "textinput": {"bg_color": "indigo", "text_color": "indigo"}}
+{"app_theme": "black", "back_color": "limegreen", "buttons": {"bg_color": "gold", "text_color": "limegreen"}, "front_color": "gold", "labels": {"bg_color": "limegreen", "text_color": "gold"}, "textinput": {"bg_color": "limegreen", "text_color": "gold"}}

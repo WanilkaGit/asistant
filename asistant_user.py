@@ -78,10 +78,10 @@ class WriteUserInfoScreen(Screen):
         user_birth_row.add_widget(self.birth_mounth)
         user_birth_row.add_widget(self.birth_year)
 
-        self.saver_btn = Button(text="Зберегти все")
+        self.saver_btn = Button(text="Зберегти все", background_normal="blue")
         self.saver_btn.on_press = self.save_ans
 
-        self.skip_btn = Button(text="Я маю записані дані і не бажаю змін")
+        self.skip_btn = Button(text="Я маю записані дані і не бажаю змін", background_normal="blue")
         self.skip_btn.on_press = self.skip_rewrite
 
         main_col.add_widget(self.user_name)

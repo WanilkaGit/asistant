@@ -14,10 +14,10 @@ class RandomScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         chose_lbl = Label(text="",font_size=50)
-        self.ranint = Button(text="Кубик",  font_size=100)
+        self.ranint = Button(text="Кубик",  font_size=100, background_normal="blue")
         self.ranint.on_press = self.next
-        self.one_for_4 = Button(text="1 з 4", font_size=100)
-        self.btn_sharp = Button(text="", font_size=10)
+        self.one_for_4 = Button(text="1 з 4", font_size=100, background_normal="blue")
+        self.btn_sharp = Button(text="", font_size=10, background_normal="blue")
 
         col1 = BoxLayout(orientation="vertical")
         col1.add_widget(self.ranint)
@@ -37,10 +37,10 @@ class KubeScreen(Screen):
         
         main_layout2 = BoxLayout(orientation="vertical", size_hint=(1, 0.4))
         
-        self.reset_btn = Button(text="ще раз", font_size=80)
+        self.reset_btn = Button(text="ще раз", font_size=80, background_normal="blue")
         self.reset_btn.on_press = self.reset
         
-        self.start_btn = Button(text="початковий екран", font_size=80)
+        self.start_btn = Button(text="початковий екран", font_size=80, background_normal="blue")
         self.start_btn.on_press = self.start
         
         main_layout2.add_widget(self.reset_btn)
