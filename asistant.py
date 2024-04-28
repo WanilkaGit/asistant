@@ -28,7 +28,7 @@ class MenuScreen(Screen):
 
         tools_row = BoxLayout(size_hint=(1, 0.25))
 
-        self.info_label = TextInput(text="", foreground_color=[1, 1, 1, 1], readonly=True, font_size=25, size_hint = [1, 0.75], background_color = [0, 0, 0, 1])
+        self.info_label = TextInput(text="", readonly=True, font_size=25, size_hint = [1, 0.75], background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         tools_row.add_widget(self.info_label)
 
         tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))

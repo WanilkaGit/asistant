@@ -50,18 +50,18 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
         self.list_note = []
 
 
-        text_field_lbl = Label(text="for write", font_size=50, size_hint=(1, 0.1))
-        self.text_field = TextInput(multiline=True, hint_text="НАПИШІТЬ ЩОСЬ... будь ласка")
+        text_field_lbl = Label(text="for write", font_size=50, size_hint=(1, 0.1), color=settings["labels"]["text_color"])
+        self.text_field = TextInput(multiline=True, hint_text="НАПИШІТЬ ЩОСЬ... будь ласка", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
 
 
         self.list_notes = GridLayout(cols=1, size_hint_y=None)
         self.list_notes.bind(minimum_height = self.list_notes.setter("height"))
         scroll_list_notes = ScrollView()
         scroll_list_notes.add_widget(self.list_notes)
-        list_notes_lbl = Label(text="List for notes", font_size=25, size_hint=(1, 0.1))
+        list_notes_lbl = Label(text="List for notes", font_size=25, size_hint=(1, 0.1), color=settings["labels"]["text_color"])
 
 
-        self.search_note_inp = TextInput(hint_text="В пиши якщо хочеш знайти потрібну тобі замітку")
+        self.search_note_inp = TextInput(hint_text="В пиши якщо хочеш знайти потрібну тобі замітку", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         self.search_note_inp.bind(text=self.on_text)
 
         self.btn_create_notes = Button(text="Create note", background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
@@ -94,14 +94,14 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
         row1.add_widget(col2)
 
         main_layout = BoxLayout(orientation="vertical")
-        self.massege_lbl = Label(text="Натисніть на кнопку стартової замітки", font_size=25, size_hint=(1, 0.1))
+        self.massege_lbl = Label(text="Натисніть на кнопку стартової замітки", font_size=25, size_hint=(1, 0.1), color=settings["labels"]["text_color"])
         main_layout.add_widget(self.massege_lbl)
         main_layout.add_widget(row1)
 
         self.add_widget(main_layout)
 
         for note in notes:
-            self.note_lbl = SelectableLabel(text=str(note), size_hint_y = None)
+            self.note_lbl = SelectableLabel(text=str(note), size_hint_y = None, color=settings["labels"]["text_color"])
             self.note_lbl.bind(on_touch_down=lambda instance, touch: self.note_lbl.on_touch_down(touch))  # Bind the touch event
             self.list_note.append(self.note_lbl)
             self.list_notes.add_widget(self.note_lbl)
@@ -114,14 +114,15 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
                     for word in note.split():
                         for word2 in value.split():
                             if word2 == word:
-                                self.massege_lbl.text = (str(self.list_note))
+                                self.note_lbl = SelectableLabel(text=str(note), size_hint_y = None, color=settings["labels"]["text_color"])
+                                self.note_lbl.bind(on_touch_down=lambda instance, touch: self.note_lbl.on_touch_down(touch))  # Bind the touch event
                                 self.list_note.append(note)
                                 self.list_notes.add_widget(self.note_lbl)
             else:
                 self.list_notes.clear_widgets()
                 self.list_note = []
                 for note in notes:
-                    self.note_lbl = SelectableLabel(text=str(note), size_hint_y = None)
+                    self.note_lbl = SelectableLabel(text=str(note), size_hint_y = None, color=settings["labels"]["text_color"])
                     self.note_lbl.bind(on_touch_down=lambda instance, touch: self.note_lbl.on_touch_down(touch))  # Bind the touch event
                     self.list_note.append(self.note_lbl)
                     self.list_notes.add_widget(self.note_lbl)
@@ -129,7 +130,7 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
 
     def show_popup(self):
         line1 = BoxLayout(orientation="vertical")
-        name_note = TextInput(hint_text="тут введіть назву замітки для створення замітки")
+        name_note = TextInput(hint_text="тут введіть назву замітки для створення замітки", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         def sure_exit():
             if name_note.text != "":
                 note_name = name_note.text
@@ -137,7 +138,7 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
 
                 popup.dismiss()
                 self.massege_lbl.text = choice(["Назву написано замітку створено починаймо писати", "Ви створили замітку", "Замітка готова до заповнення текстом"])
-                self.note_lbl = SelectableLabel(text=note_name, size_hint_y = None)
+                self.note_lbl = SelectableLabel(text=note_name, size_hint_y = None, color=settings["labels"]["text_color"])
                 self.note_lbl.bind(on_touch_down=lambda instance, touch: self.note_lbl.on_touch_down(touch))  # Bind the touch event
                 self.list_note.append(self.note_lbl)
                 self.list_notes.add_widget(self.note_lbl)
@@ -145,10 +146,10 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
         def no_sure_exit():
             popup.dismiss()
             self.massege_lbl.text = choice(["Створення відхилено", "Ну не хочеш як хочеш", "Відмовив ха меньше працювати"])
-        sure_btn = Button(text="Ok", on_release=lambda _: sure_exit())
-        not_sure_btn = Button(text="Cencel", on_release=lambda _: no_sure_exit())
+        sure_btn = Button(text="Ok", on_release=lambda _: sure_exit(), background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
+        not_sure_btn = Button(text="Cencel", on_release=lambda _: no_sure_exit(), background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         line1.add_widget(name_note)
-        line1.add_widget(Label(text='Це додаткове вікно'))  # Створити екземпляр класу Label
+        line1.add_widget(Label(text='Це додаткове вікно', color=settings["labels"]["text_color"]))  # Створити екземпляр класу Label
         line1.add_widget(sure_btn)
         line1.add_widget(not_sure_btn)
         content = line1

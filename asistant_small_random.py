@@ -51,12 +51,12 @@ class KubeScreen(Screen):
         
         main_layout3 =BoxLayout(orientation="vertical")
         if random_int == 1:
-            lbl_1 = Label(text="",  font_size=400)
-            lbl_2 = Label(text="*",  font_size=400)
-            lbl_3 = Label(text="",  font_size=400)
-            lbl_4 = Label(text="*",  font_size=400)
-            lbl_5 = Label(text="*",  font_size=400)
-            lbl_6 = Label(text="*",  font_size=400)
+            lbl_1 = Label(text="",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_2 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_3 = Label(text="",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_4 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_5 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_6 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
             
             line1 = BoxLayout()
             line2 = BoxLayout()
@@ -67,36 +67,36 @@ class KubeScreen(Screen):
             main_layout.add_widget(lbl_3)    
             
         if random_int == 2:
-            lbl_1 = Label(text="*",  font_size=400)
-            lbl_2 = Label(text="",  font_size=400)
-            lbl_3 = Label(text="*",  font_size=400)
-            lbl_4 = Label(text="*",  font_size=400)
-            lbl_5 = Label(text="*",  font_size=400)
-            lbl_6 = Label(text="*",  font_size=400)
+            lbl_1 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_2 = Label(text="",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_3 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_4 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_5 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_6 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
             
             main_layout.add_widget(lbl_1)
             main_layout.add_widget(lbl_2)
             main_layout.add_widget(lbl_3)
             
         if random_int == 3:
-            lbl_1 = Label(text="*",  font_size=400)
-            lbl_2 = Label(text="*",  font_size=400)
-            lbl_3 = Label(text="*",  font_size=400)
-            lbl_4 = Label(text="*",  font_size=400)
-            lbl_5 = Label(text="*",  font_size=400)
-            lbl_6 = Label(text="*",  font_size=400)
+            lbl_1 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_2 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_3 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_4 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_5 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_6 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
             
             main_layout.add_widget(lbl_1)
             main_layout.add_widget(lbl_2)
             main_layout.add_widget(lbl_3) 
             
         if random_int == 4:
-            lbl_1 = Label(text="*",  font_size=400)
-            lbl_2 = Label(text="*",  font_size=400)
-            lbl_3 = Label(text="",  font_size=400)
-            lbl_4 = Label(text="*",  font_size=400)
-            lbl_5 = Label(text="*",  font_size=400)
-            lbl_6 = Label(text="*",  font_size=400)
+            lbl_1 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_2 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_3 = Label(text="",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_4 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_5 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_6 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
             
             line1 = BoxLayout()
             line1.add_widget(lbl_1)
@@ -113,12 +113,12 @@ class KubeScreen(Screen):
             main_layout.add_widget(line2)
 
         if random_int == 5:
-            lbl_1 = Label(text="*",  font_size=400)
-            lbl_2 = Label(text="*",  font_size=400)
-            lbl_3 = Label(text="*",  font_size=400)
-            lbl_4 = Label(text="*",  font_size=400)
-            lbl_5 = Label(text="*",  font_size=400)
-            lbl_6 = Label(text="*",  font_size=400)
+            lbl_1 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_2 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_3 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_4 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_5 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_6 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
             
             line1 = BoxLayout()
             line1.add_widget(lbl_1)
@@ -135,12 +135,12 @@ class KubeScreen(Screen):
             main_layout.add_widget(line2)
     
         if random_int == 6:
-            lbl_1 = Label(text="*",  font_size=400)
-            lbl_2 = Label(text="*",  font_size=400)
-            lbl_3 = Label(text="*",  font_size=400)
-            lbl_4 = Label(text="*",  font_size=400)
-            lbl_5 = Label(text="*",  font_size=400)
-            lbl_6 = Label(text="*",  font_size=400)
+            lbl_1 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_2 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_3 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_4 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_5 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
+            lbl_6 = Label(text="*",  font_size=400, color=settings["labels"]["text_color"])
             
             line1 = BoxLayout()
             line1.add_widget(lbl_1)

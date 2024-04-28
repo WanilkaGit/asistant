@@ -1,1 +1,1 @@
-{"app_theme": "black", "back_color": "orange", "buttons": {"bg_color": "black", "text_color": "orange"}, "front_color": "black", "labels": {"bg_color": "orange", "text_color": "black"}, "textinput": {"bg_color": "orange", "text_color": "black"}}
+{"app_theme": "black", "back_color": "limegreen", "buttons": {"bg_color": "black", "border_color": "", "text_color": "limegreen"}, "front_color": "black", "labels": {"border_color": "", "text_color": "limegreen"}, "textinput": {"bg_color": "limegreen", "border_color": "", "text_color": "black"}}

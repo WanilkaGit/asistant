@@ -1,5 +1,5 @@
 from kivy.app import App
-from kivy.uix.button import Button
+from kivy.uix.label import Label
 from kivy.core.window import Window
 import json
 
@@ -10,7 +10,7 @@ with open('JSON//settings.json', 'r') as file:
 class TestApp(App):
     def build(self):
         # Створення кнопки
-        btn = Button(text='Натисни мене', background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"], background_normal="blue", size_hint=(0.5, 0.5))
+        btn = Label(text='Натисни мене', color=settings["labels"]["bg_color"], size_hint=(0.5, 0.5))
         
         # Додавання події на натискання кнопки
         btn.bind(on_press=self.on_button_press)

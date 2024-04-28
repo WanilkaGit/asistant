@@ -18,13 +18,15 @@ import json
 # settings = {
 #         "buttons":{
 #             "bg_color": str(),
-#             "text_color": str()},
+#             "text_color": str(),
+#             "border_color": str()},
 #         "textinput":{
 #             "bg_color": str(),
-#             "text_color": str()},
+#             "text_color": str(),
+#             "border_color": str()},
 #         "labels": {
-#             "bg_color": str(),
-#             "text_color": str()},
+#             "text_color": str("white"),
+#             "border_color": str()},
 #         "app_theme": str(),
 #         "front_color": str(),
 #         "back_color": str()}
@@ -72,7 +74,7 @@ class SettigsScreen(Screen):
         """FRONT THEME"""
         main_col.add_widget(self.dark_white)
         front_grid = GridLayout(rows=1)
-        lbl_front = Label(text="Базовий")
+        lbl_front = Label(text="Базовий", color=settings["labels"]["text_color"])
         front_grid.add_widget(lbl_front)
         for color in self.colors:
             self.front_radios = CheckBox(group="front_color", color=color)
@@ -86,7 +88,7 @@ class SettigsScreen(Screen):
 
         """BACK THEME"""
         back_grid = GridLayout(rows=1)
-        lbl_back = Label(text="Допоміжний")
+        lbl_back = Label(text="Допоміжний", color=settings["labels"]["text_color"])
         back_grid.add_widget(lbl_back)
         for color in self.colors:
             self.back_radios = CheckBox(group="back_color", color=color)
@@ -120,7 +122,6 @@ class SettigsScreen(Screen):
         settings["front_color"] = instance.text
         settings["buttons"]["bg_color"] = instance.text
         settings["textinput"]["text_color"] = instance.text
-        settings["labels"]["text_color"] = instance.text
         with open("JSON\\settings.json", "w") as file:
             json.dump(settings, file, sort_keys=True)
 
@@ -128,8 +129,8 @@ class SettigsScreen(Screen):
     def save_back_theme(self, instance, value):
         settings["back_color"] = instance.text
         settings["buttons"]["text_color"] = instance.text
+        settings["labels"]["text_color"] = instance.text
         settings["textinput"]["bg_color"] = instance.text
-        settings["labels"]["bg_color"] = instance.text
         with open("JSON\\settings.json", "w") as file:
             json.dump(settings, file, sort_keys=True)
     """THEME FUNC"""

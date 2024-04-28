@@ -45,7 +45,7 @@ class CalculatorScreen(Screen):
 
 
         tools_row = BoxLayout(size_hint=(1, 0.25))
-        self.info_label = TextInput(text="", foreground_color=[1, 1, 1, 1], readonly=True, font_size=25, size_hint = [1, 0.75], background_color = [0, 0, 0, 1])
+        self.info_label = TextInput(text="", readonly=True, font_size=25, size_hint = [1, 0.75], background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
         self.setings_btn = Button(text="*", font_size=100, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.profile_btn = Button(text="Me", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
@@ -58,7 +58,7 @@ class CalculatorScreen(Screen):
 
 
         root = BoxLayout(orientation="vertical", padding=5)
-        self.result = TextInput(text="", foreground_color=[1, 1, 1, 1], readonly=True, font_size=50, size_hint = [1, 0.75], background_color = [0, 0, 0, 1])
+        self.result = TextInput(text="", readonly=True, font_size=50, size_hint = [1, 0.75], background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         root.add_widget(self.result)
         btn_grid = GridLayout(rows=5)
 

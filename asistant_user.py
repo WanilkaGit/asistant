@@ -58,10 +58,10 @@ class WriteUserInfoScreen(Screen):
         main_col = BoxLayout(orientation="vertical")
         main_col.bind(minimum_height=main_col.setter('height'))
 
-        self.user_name = TextInput(hint_text="Вкажіть ваше ім'я")
-        self.user_pas = TextInput(hint_text="Вкажіть пароль")
-        self.user_frase = TextInput(hint_text="Ваша фраза")
-        self.user_info = TextInput(hint_text="Вкажи яка ти кицюня(котик)")
+        self.user_name = TextInput(hint_text="Вкажіть ваше ім'я", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
+        self.user_pas = TextInput(hint_text="Вкажіть пароль", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
+        self.user_frase = TextInput(hint_text="Ваша фраза", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
+        self.user_info = TextInput(hint_text="Вкажи яка ти кицюня(котик)", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
 
         user_birth_row =GridLayout(rows=1, cols=3)
 
@@ -133,11 +133,11 @@ class ProfileUserInfoScreen(Screen):
 
         main_col = BoxLayout(orientation="vertical")
 
-        user_name = Label(text="Користувач: @"+user["User_Name"])
-        user_hb = Label(text=str(user["User_Happy_Birthday"]["Birthday_Day"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Moon"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Year"]))
-        user_pas = Label(text="Користувацький пароль: " + user["User_Password"])
-        user_frase = Label(text="Корисувач каже: " + user["User_Frase"])
-        user_information = TextInput(readonly=True, text="Про користувача: "+user["User_About"])
+        user_name = Label(text="Користувач: @"+user["User_Name"], color=settings["labels"]["text_color"])
+        user_hb = Label(text=str(user["User_Happy_Birthday"]["Birthday_Day"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Moon"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Year"]), color=settings["labels"]["text_color"])
+        user_pas = Label(text="Користувацький пароль: " + user["User_Password"], color=settings["labels"]["text_color"])
+        user_frase = Label(text="Корисувач каже: " + user["User_Frase"], color=settings["labels"]["text_color"])
+        user_information = TextInput(readonly=True, text="Про користувача: "+user["User_About"], background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
 
         main_col.add_widget(user_name)
         main_col.add_widget(user_hb)
