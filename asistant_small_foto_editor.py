@@ -84,7 +84,7 @@ class EditorScreen(Screen):
         self.file_chooser = FileChooserIconView()
         self.file_chooser.path = "d:"
         self.file_chooser.dirselect = True
-        button = Button(text="Підтвердити вибір", size_hint=(1, 0.2), background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
+        button = Button(text="Підтвердити вибір", size_hint=(1, 0.2))
         button.on_press = self.showFileNamesList
         layout.add_widget(self.file_chooser)
         layout.add_widget(button)
