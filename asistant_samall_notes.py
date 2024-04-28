@@ -17,6 +17,8 @@ import json
 with open('JSON//settings.json', 'r') as file:
     settings = json.load(file)
 
+Window.clearcolor = settings["app_theme"]
+
 # notes = {
 #     "Ласкаво просимо!": {
 #         "текст": "Це найкращий додаток для заміток у світі!"

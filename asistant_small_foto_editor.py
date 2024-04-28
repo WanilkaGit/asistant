@@ -3,8 +3,11 @@ from PIL import ImageFilter
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.core.window import Window
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
+
 from kivy.uix.button import Button
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.image import Image as KivyImage
@@ -17,6 +20,8 @@ import json
 
 with open('JSON//settings.json', 'r') as file:
     settings = json.load(file)
+
+Window.clearcolor = settings["app_theme"]
 
 class EditorScreen(Screen):
     selected_dir = r"d:"
@@ -31,6 +36,10 @@ class EditorScreen(Screen):
         self.popup = None
 
         self.photo_zone = KivyImage(source=None, keep_data=False)
+        if settings["app_theme"] == "white":
+            self.photo_zone.color = "black"
+        elif settings["app_theme"] == "black":
+            self.photo_zone.color = "white"
         self.photo_zone.fit_mode = "scale-down"
 
         self.btn_folder = Button(text="Папочки", size_hint=(1, 0.1), background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])

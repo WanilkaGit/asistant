@@ -1,7 +1,10 @@
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.core.window import Window
+
 from kivy.uix.boxlayout import BoxLayout
+
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 
@@ -11,6 +14,8 @@ import json
 
 with open('JSON//settings.json', 'r') as file:
     settings = json.load(file)
+
+Window.clearcolor = settings["app_theme"]
 
 class RandomScreen(Screen):
 

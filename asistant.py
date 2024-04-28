@@ -20,6 +20,8 @@ import json
 with open('JSON//settings.json', 'r') as file:
     settings = json.load(file)
 
+Window.clearcolor = settings["app_theme"]
+
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
