@@ -14,6 +14,11 @@ from asistant_small_random import *
 
 from asistant_settings import *
 from asistant_user import *
+import json
+
+
+with open('JSON//settings.json', 'r') as file:
+    settings = json.load(file)
 
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
@@ -27,9 +32,9 @@ class MenuScreen(Screen):
         tools_row.add_widget(self.info_label)
 
         tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
-        self.setings_btn = Button(text="*", font_size=100, background_normal="blue")
+        self.setings_btn = Button(text="*", font_size=100, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.setings_btn.on_press = self.settings
-        self.profile_btn = Button(text="Me", font_size=50, background_normal="blue")
+        self.profile_btn = Button(text="Me", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.profile_btn.on_press = self.profile
         tools_row_btns_col.add_widget(self.setings_btn)
         tools_row_btns_col.add_widget(self.profile_btn)
@@ -38,13 +43,13 @@ class MenuScreen(Screen):
 
         function_grid = GridLayout(cols=2)
 
-        self.btn_calc = Button(text="calculator", font_size=50, background_normal="blue")
+        self.btn_calc = Button(text="calculator", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.btn_calc.on_press=self.start_calc
-        self.btn_edit = Button(text="Photo Editor", font_size=50, background_normal="blue")
+        self.btn_edit = Button(text="Photo Editor", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.btn_edit.on_press=self.start_edit
-        self.btn_rand = Button(text = "Randomizer", font_size=50, background_normal="blue")
+        self.btn_rand = Button(text = "Randomizer", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.btn_rand.on_press=self.start_random
-        self.btn_notes = Button(text="Notes", font_size=50, background_normal="blue")
+        self.btn_notes = Button(text="Notes", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.btn_notes.on_press=self.start_notes
 
         function_grid.add_widget(self.btn_calc)

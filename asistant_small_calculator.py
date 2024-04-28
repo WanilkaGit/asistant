@@ -6,6 +6,12 @@ from kivy.uix.gridlayout import GridLayout
 
 from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+import json
+
+
+
+with open('JSON//settings.json', 'r') as file:
+    settings = json.load(file)
 
 saveInput = ""
 
@@ -41,8 +47,8 @@ class CalculatorScreen(Screen):
         tools_row = BoxLayout(size_hint=(1, 0.25))
         self.info_label = TextInput(text="", foreground_color=[1, 1, 1, 1], readonly=True, font_size=25, size_hint = [1, 0.75], background_color = [0, 0, 0, 1])
         tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
-        self.setings_btn = Button(text="*", font_size=100, background_normal="blue")
-        self.profile_btn = Button(text="Me", font_size=50, background_normal="blue")
+        self.setings_btn = Button(text="*", font_size=100, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
+        self.profile_btn = Button(text="Me", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
 
         tools_row.add_widget(self.info_label)
         tools_row_btns_col.add_widget(self.setings_btn)
@@ -56,31 +62,31 @@ class CalculatorScreen(Screen):
         root.add_widget(self.result)
         btn_grid = GridLayout(rows=5)
 
-        btn_grid.add_widget(Button(text="<=", on_press=self.calculate, color="#9400D3", font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="%", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="(", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text=")", on_press=self.calculate, font_size=50, background_normal="blue"))
+        btn_grid.add_widget(Button(text="<=", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="%", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="(", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text=")", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
 
-        btn_grid.add_widget(Button(text="7", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="8", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="9", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="*", on_press=self.calculate, font_size=50))
+        btn_grid.add_widget(Button(text="7", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="8", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="9", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="*", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
 
-        btn_grid.add_widget(Button(text="4", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="5", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="6", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="+", on_press=self.calculate, font_size=50, background_normal="blue"))
+        btn_grid.add_widget(Button(text="4", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="5", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="6", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="+", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
 
 
-        btn_grid.add_widget(Button(text="1", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="2", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="3", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="/", on_press=self.calculate, font_size=50, background_normal="blue"))
+        btn_grid.add_widget(Button(text="1", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="2", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="3", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="/", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
 
-        btn_grid.add_widget(Button(text=".", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="0", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="=", on_press=self.calculate, font_size=50, background_normal="blue"))
-        btn_grid.add_widget(Button(text="-", on_press=self.calculate, font_size=50, background_normal="blue"))
+        btn_grid.add_widget(Button(text=".", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="0", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="=", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        btn_grid.add_widget(Button(text="-", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
 
         root.add_widget(btn_grid)
 

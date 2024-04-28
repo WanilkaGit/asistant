@@ -14,6 +14,9 @@ from kivy.core.window import Window
 from kivy.uix.popup import Popup
 import json
 
+with open('JSON//settings.json', 'r') as file:
+    settings = json.load(file)
+
 # notes = {
 #     "Ласкаво просимо!": {
 #         "текст": "Це найкращий додаток для заміток у світі!"
@@ -61,10 +64,10 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
         self.search_note_inp = TextInput(hint_text="В пиши якщо хочеш знайти потрібну тобі замітку")
         self.search_note_inp.bind(text=self.on_text)
 
-        self.btn_create_notes = Button(text="Create note")
-        self.btn_del_notes = Button(text="Delet note")
+        self.btn_create_notes = Button(text="Create note", background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
+        self.btn_del_notes = Button(text="Delet note", background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
 
-        self.btn_save_notes = Button(text="Save note", size_hint=(1, 0.24))
+        self.btn_save_notes = Button(text="Save note", size_hint=(1, 0.24), background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
 
         self.btn_create_notes.on_press = self.show_popup
         self.btn_save_notes.on_press = self.save_note
