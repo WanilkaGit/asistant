@@ -44,12 +44,12 @@ class CalculatorScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
-        main_col = BoxLayout(orientation="vertical")
+        main_col = BoxLayout(orientation="vertical", spacing=2)
 
 
-        tools_row = BoxLayout(size_hint=(1, 0.25))
+        tools_row = BoxLayout(size_hint=(1, 0.25), spacing=2)
         self.info_label = TextInput(text="", readonly=True, font_size=25, size_hint = [1, 0.75], background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
-        tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
+        tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1), spacing=2)
         self.setings_btn = Button(text="*", font_size=100, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.profile_btn = Button(text="Me", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
 
@@ -60,10 +60,10 @@ class CalculatorScreen(Screen):
         main_col.add_widget(tools_row)
 
 
-        root = BoxLayout(orientation="vertical", padding=5)
+        root = BoxLayout(orientation="vertical", padding=5, spacing=2)
         self.result = TextInput(text="", readonly=True, font_size=50, size_hint = [1, 0.75], background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         root.add_widget(self.result)
-        btn_grid = GridLayout(rows=5)
+        btn_grid = GridLayout(rows=5, spacing=2)
 
         btn_grid.add_widget(Button(text="<=", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
         btn_grid.add_widget(Button(text="%", on_press=self.calculate, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
@@ -95,3 +95,12 @@ class CalculatorScreen(Screen):
 
         main_col.add_widget(root)
         self.add_widget(main_col)
+
+class ProjectCalculator(App):
+    def build(self):
+        sm = ScreenManager()
+        sm.add_widget(CalculatorScreen(name='calculator'))
+        return sm
+
+if __name__ == "__main__":
+    ProjectCalculator().run()

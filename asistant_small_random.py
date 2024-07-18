@@ -27,7 +27,7 @@ class RandomScreen(Screen):
         self.one_for_4 = Button(text="1 з 4", font_size=100, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.btn_sharp = Button(text="", font_size=10, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
 
-        col1 = BoxLayout(orientation="vertical")
+        col1 = BoxLayout(orientation="vertical", spacing=2)
         col1.add_widget(self.ranint)
         self.add_widget(col1)
     def next(self):# прописуємо фунції для двох кнопок 

@@ -27,9 +27,10 @@ import json
 #         "labels": {
 #             "text_color": str("white"),
 #             "border_color": str()},
-#         "app_theme": str(),
+#         "app_theme": "black",
 #         "front_color": str(),
-#         "back_color": str()}
+#         "back_color": str(),
+#         "border_color": str()}
 
 # with open("JSON\\settings.json", "w") as file:
 #     json.dump(settings, file, sort_keys=True)
@@ -41,22 +42,7 @@ class SettigsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.colors = ["orange", "gold", "indigo", "red", "mediumblue","limegreen", "deeppink", "snow", "black"]
-        main_col = BoxLayout(orientation="vertical")
-
-        """TOOLS ROW"""
-        tools_row = BoxLayout(size_hint=(1, 0.25))
-
-        self.info_label = TextInput(text="", foreground_color=[1, 1, 1, 1], readonly=True, font_size=25, size_hint=[1, 0.75],             
-        background_color=[0, 0, 0, 1])
-        tools_row.add_widget(self.info_label)
-
-        tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
-        self.setings_btn = Button(text="*", font_size=100, background_normal="blue")
-        self.profile_btn = Button(text="Me", font_size=50, background_normal="blue")
-        tools_row_btns_col.add_widget(self.profile_btn)
-        tools_row.add_widget(tools_row_btns_col)
-        main_col.add_widget(tools_row)
-        """TOOLS ROW"""
+        main_col = BoxLayout(orientation="vertical", spacing=2)
 
 
         """THEME OPTIONS"""
@@ -73,7 +59,7 @@ class SettigsScreen(Screen):
 
         """FRONT THEME"""
         main_col.add_widget(self.dark_white)
-        front_grid = GridLayout(rows=1)
+        front_grid = GridLayout(rows=1, spacing=2)
         lbl_front = Label(text="Базовий", color=settings["labels"]["text_color"])
         front_grid.add_widget(lbl_front)
         for color in self.colors:
@@ -87,7 +73,7 @@ class SettigsScreen(Screen):
 
 
         """BACK THEME"""
-        back_grid = GridLayout(rows=1)
+        back_grid = GridLayout(rows=1, spacing=2)
         lbl_back = Label(text="Допоміжний", color=settings["labels"]["text_color"])
         back_grid.add_widget(lbl_back)
         for color in self.colors:
@@ -98,6 +84,19 @@ class SettigsScreen(Screen):
             self.back_radios.bind(active=self.save_back_theme)
             back_grid.add_widget(self.back_radios)
         main_col.add_widget(back_grid)
+        
+        """BACK THEME"""
+        border_color_grid = GridLayout(rows=1, spacing=2)
+        lbl_border = Label(text="Допоміжний", color=settings["labels"]["text_color"])
+        border_color_grid.add_widget(lbl_border)
+        for color in self.colors:
+            self.border_radios = CheckBox(group="background_color", color=color)
+            self.border_radios.text = color
+            if settings["border_color"] == self.border_radios.text:
+                self.border_radios.active = True
+            self.border_radios.bind(active=self.save_border_theme)
+            border_color_grid.add_widget(self.border_radios)
+        main_col.add_widget(border_color_grid)
         """THEME OPTIONS"""
 
         self.add_widget(main_col)
@@ -133,7 +132,14 @@ class SettigsScreen(Screen):
         settings["textinput"]["bg_color"] = instance.text
         with open("JSON\\settings.json", "w") as file:
             json.dump(settings, file, sort_keys=True)
-    """THEME FUNC"""
+    
+    def save_border_theme(self, instance, value):
+        settings["border_color"] = instance.text
+        settings["buttons"]["border_color"] = instance.text
+        settings["labels"]["border_color"] = instance.text
+        settings["textinput"]["border_color"] = instance.text
+        with open("JSON\\settings.json", "w") as file:
+            json.dump(settings, file, sort_keys=True)
 
 
 class SettingsApp(App):

@@ -43,7 +43,7 @@ class EditorScreen(Screen):
         self.photo_zone.fit_mode = "scale-down"
 
         self.btn_folder = Button(text="Папочки", size_hint=(1, 0.1), background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
-        self.list_files = GridLayout(cols=1, size_hint_y=None)
+        self.list_files = GridLayout(cols=1, size_hint_y=None, spacing=2)
         self.list_files.bind(minimum_height = self.list_files.setter("height"))
         list_f_view = ScrollView()
         list_f_view.add_widget(self.list_files)
@@ -65,15 +65,15 @@ class EditorScreen(Screen):
         self.btn_blur.on_press = self.do_blur
         self.btn_folder.on_press = self.chooseWorkdir
 
-        col1 = BoxLayout(orientation="vertical", size_hint=(0.145, 1))
+        col1 = BoxLayout(orientation="vertical", size_hint=(0.145, 1), spacing=2)
         col1.add_widget(self.btn_folder)
         col1.add_widget(list_f_view)
 
-        row2 = BoxLayout()
+        row2 = BoxLayout(spacing=2)
         row2.add_widget(col1)
         row2.add_widget(self.photo_zone)
 
-        row1 = BoxLayout(size_hint=(1, 0.1))
+        row1 = BoxLayout(size_hint=(1, 0.1), spacing=2)
         row1.add_widget(self.btn_left)
         row1.add_widget(self.btn_right)
         row1.add_widget(self.btn_mirror)
@@ -83,13 +83,13 @@ class EditorScreen(Screen):
         row1.add_widget(self.btn_256_color)
         row1.add_widget(self.btn_detail)
 
-        main_layout = BoxLayout(orientation="vertical")
+        main_layout = BoxLayout(orientation="vertical", spacing=2)
         main_layout.add_widget(row2)
         main_layout.add_widget(row1)
         self.add_widget(main_layout)
 
     def chooseWorkdir(self):
-        layout = BoxLayout(orientation="vertical")
+        layout = BoxLayout(orientation="vertical", spacing=2)
         self.file_chooser = FileChooserIconView()
         self.file_chooser.path = "d:"
         self.file_chooser.dirselect = True

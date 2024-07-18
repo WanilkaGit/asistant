@@ -75,15 +75,15 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
         self.btn_save_notes.on_press = self.save_note
         self.btn_del_notes.on_press = self.del_note
 
-        row1 = BoxLayout(size_hint=(1, 0.24))
+        row1 = BoxLayout(size_hint=(1, 0.24), spacing=2)
         row1.add_widget(self.btn_create_notes)
         row1.add_widget(self.btn_del_notes)
 
-        col1 = BoxLayout(orientation="vertical")
+        col1 = BoxLayout(orientation="vertical", spacing=2)
         col1.add_widget(text_field_lbl)
         col1.add_widget(self.text_field)
 
-        col2 = BoxLayout(orientation="vertical", size_hint=(0.5, 1))
+        col2 = BoxLayout(orientation="vertical", size_hint=(0.5, 1), spacing=2)
         col2.add_widget(list_notes_lbl)
         col2.add_widget(scroll_list_notes)
         col2.add_widget(self.search_note_inp)
@@ -91,11 +91,11 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
         col2.add_widget(self.btn_save_notes)
 
 
-        row1 = BoxLayout()
+        row1 = BoxLayout(spacing=2)
         row1.add_widget(col1)
         row1.add_widget(col2)
 
-        main_layout = BoxLayout(orientation="vertical")
+        main_layout = BoxLayout(orientation="vertical", spacing=2)
         self.massege_lbl = Label(text="Натисніть на кнопку стартової замітки", font_size=25, size_hint=(1, 0.1), color=settings["labels"]["text_color"])
         main_layout.add_widget(self.massege_lbl)
         main_layout.add_widget(row1)
@@ -131,7 +131,7 @@ class NotesScreen(Screen):# тут прописаний перший клас/е
 
 
     def show_popup(self):
-        line1 = BoxLayout(orientation="vertical")
+        line1 = BoxLayout(orientation="vertical", spacing=2)
         name_note = TextInput(hint_text="тут введіть назву замітки для створення замітки", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         def sure_exit():
             if name_note.text != "":

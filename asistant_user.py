@@ -57,7 +57,7 @@ def birth_year_func(birth_year, text):
 class WriteUserInfoScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        main_col = BoxLayout(orientation="vertical")
+        main_col = BoxLayout(orientation="vertical", spacing=2)
         main_col.bind(minimum_height=main_col.setter('height'))
 
         self.user_name = TextInput(hint_text="Вкажіть ваше ім'я", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
@@ -65,7 +65,7 @@ class WriteUserInfoScreen(Screen):
         self.user_frase = TextInput(hint_text="Ваша фраза", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         self.user_info = TextInput(hint_text="Вкажи яка ти кицюня(котик)", background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
 
-        user_birth_row =GridLayout(rows=1, cols=3)
+        user_birth_row =GridLayout(rows=1, cols=3, spacing=2)
 
         self.birth_day = Spinner(text="День народження")
         for i in range(1, 32):
@@ -133,7 +133,7 @@ class ProfileUserInfoScreen(Screen):
         with open('JSON//user_info.json', 'r') as file:
             user = json.load(file)
 
-        main_col = BoxLayout(orientation="vertical")
+        main_col = BoxLayout(orientation="vertical", spacing=2)
 
         user_name = Label(text="Користувач: @"+user["User_Name"], color=settings["labels"]["text_color"])
         user_hb = Label(text=str(user["User_Happy_Birthday"]["Birthday_Day"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Moon"])+"/"+str(user["User_Happy_Birthday"]["Birthday_Year"]), color=settings["labels"]["text_color"])

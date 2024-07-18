@@ -1,26 +1,15 @@
 from kivy.app import App
-from kivy.uix.label import Label
-from kivy.core.window import Window
-import json
+from kivy.uix.button import Button
 
-
-with open('JSON//settings.json', 'r') as file:
-    settings = json.load(file)
-
-class TestApp(App):
+class ButtonsApp(App):
     def build(self):
-        # Створення кнопки
-        btn = Label(text='Натисни мене', color=settings["labels"]["text_color"], size_hint=(0.5, 0.5))
-        
-        # Додавання події на натискання кнопки
-        btn.bind(on_press=self.on_button_press)
-        
-        return btn
+        button = Button(
+            text="Click me!",
+            size_hint=(0.5, 0.5),  # Встановіть розмір, який вам потрібен
+            border=(30, 30, 30, 30),  # Рамка фону кнопки
+            background_color="red",  # Колір фону (RGBA)
+        )
+        return button
 
-    def on_button_press(self, instance):
-        Window.clearcolor = (0.9, 0.9, 0.9, 1) 
-
-# Запуск додатку
-if __name__ == '__main__':
-    TestApp().run()
-
+if __name__ == "__main__":
+    ButtonsApp().run()

@@ -1,5 +1,6 @@
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.popup import Popup
 
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
@@ -25,15 +26,15 @@ Window.clearcolor = settings["app_theme"]
 class MenuScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        main_col = BoxLayout(orientation="vertical")
+        main_col = BoxLayout(orientation="vertical", spacing=2)
 
 
-        tools_row = BoxLayout(size_hint=(1, 0.25))
+        tools_row = BoxLayout(size_hint=(1, 0.25), spacing=2)
 
         self.info_label = TextInput(text="", readonly=True, font_size=25, size_hint = [1, 0.75], background_color=settings["textinput"]["bg_color"], foreground_color=settings["textinput"]["text_color"])
         tools_row.add_widget(self.info_label)
 
-        tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1))
+        tools_row_btns_col = GridLayout(cols=1, size_hint=(0.25, 1), spacing=2)
         self.setings_btn = Button(text="*", font_size=100, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.setings_btn.on_press = self.settings
         self.profile_btn = Button(text="Me", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
@@ -43,7 +44,7 @@ class MenuScreen(Screen):
         tools_row.add_widget(tools_row_btns_col)
 
 
-        function_grid = GridLayout(cols=2)
+        function_grid = GridLayout(cols=2, spacing=2)
 
         self.btn_calc = Button(text="calculator", font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"])
         self.btn_calc.on_press=self.start_calc
@@ -65,7 +66,12 @@ class MenuScreen(Screen):
 
 
     def settings(self):
-        self.manager.current = 'settings'
+        popup = Popup(background_color=settings["app_theme"])
+        popup_col = BoxLayout(orientation="vertical", spacing=2)
+        popup_col.add_widget(SettigsScreen())
+        popup_col.add_widget(Button(text="close settings", on_press=popup.dismiss, font_size=50, background_normal="blue", background_color=settings["buttons"]["bg_color"], color=settings["buttons"]["text_color"]))
+        popup.add_widget(popup_col)
+        popup.open()
 
     def profile(self):
         self.manager.current = 'user'
